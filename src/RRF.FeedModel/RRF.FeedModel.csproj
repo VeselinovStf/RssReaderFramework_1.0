@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RRF.EFModels.Abstract\RRF.EFModels.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.FeedModel.Abstract\RRF.FeedModel.Abstract.csproj" />
   </ItemGroup>
 
 </Project>
