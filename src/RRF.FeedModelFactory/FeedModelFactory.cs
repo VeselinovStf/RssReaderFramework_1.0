@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using RFF.ModelFactory.XElementInterpretator.Abstract;
 using RRF.FeedModel.Abstract;
 using RRF.FeedModelFactory.Abstract;
 using RRF.FeedModelFactoryValidator.Abstract;
@@ -15,13 +16,13 @@ namespace RRF.FeedModelFactory
     {
         private readonly IFeedModelFactoryValidator<IBaseModel> modelFactoryValidator;
         private readonly ILogger<FeedModelFactory> logger;
-        private readonly IXelementModelInterpretator<BaseRssFeed> xElementToModel;
+        private readonly IXElementInterpretator<IBaseModel> xElementToModel;
         private readonly IBaseModelFormat<IBaseModel> modelFormatter;
 
         public FeedModelFactory(
             IFeedModelFactoryValidator<IBaseModel> modelFactoryValidator,
             ILogger<FeedModelFactory> logger,
-            IXelementModelInterpretator<BaseRssFeed> xElementToModel,
+            IXElementInterpretator<IBaseModel> xElementToModel,
             IBaseModelFormat<IBaseModel> modelFormatter)
         {
             this.modelFactoryValidator = modelFactoryValidator;

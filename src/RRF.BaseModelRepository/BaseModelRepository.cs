@@ -31,7 +31,7 @@ namespace RRF.BaseModelRepository
          
         }
 
-        //TODO: REMOVE ITEM
+        //TODO: REMOVE ITEM string
         public async Task<IEnumerable<IEnumerable<IBaseModel>>> GetListedFeed(IEnumerable<IFeedNode> rssAdresses)
         {
             var RSSFeedData = new List<List<IBaseModel>>();

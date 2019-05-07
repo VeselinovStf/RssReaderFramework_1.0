@@ -1,0 +1,15 @@
+﻿using RRF.Models.BaseModel.Abstract;
+using System;
+
+namespace RRF.EFModels.BaseModel
+{
+    public class EFBaseModel : IBaseModel
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string LinkToCurrentElement { get; set; }
+        public string ImageSRC { get; set; }
+        public DateTime PubDate { get; set; }
+    }
+}
