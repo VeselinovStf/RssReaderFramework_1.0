@@ -5,7 +5,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.BaseModelRepository\RRF.BaseModelRepository.csproj" />
+    <ProjectReference Include="..\RRF.DateTimeWrapper\RRF.DateTimeWrapper.csproj" />
+    <ProjectReference Include="..\RRF.FeedModelFactoryValidator\RRF.FeedModelFactoryValidator.csproj" />
+    <ProjectReference Include="..\RRF.FeedModelFactory\RRF.FeedModelFactory.csproj" />
+    <ProjectReference Include="..\RRF.FeedNodeRepository\RRF.FeedNodeRepository.csproj" />
+    <ProjectReference Include="..\RRF.FeedRepository.Abstract\RRF.FeedRepository.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.Feed\RRF.Feed.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.BaseModelFormat\RRF.ModelFactory.BaseModelFormat.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.BaseModelXElementInterpretator\RRF.ModelFactory.BaseModelXElementInterpretator.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.FormateElementsRepository.Abstract\RRF.ModelFactory.FormateElementsRepository.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.FormatElementsRepository\RRF.ModelFactory.FormatElementsRepository.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.ModelBindDateTime\RRF.ModelFactory.ModelBindDateTime.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.ModelBindImage\RRF.ModelFactory.ModelBindImage.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.ModelBindString\RRF.ModelFactory.ModelBindString.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.StringValidator.Abstract\RRF.ModelFactory.StringValidator.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.StringValidator\RRF.ModelFactory.StringValidator.csproj" />
+    <ProjectReference Include="..\RRF.RRFDbContext\RRF.RRFDbContext.csproj" />
+    <ProjectReference Include="..\RRF.WebClintWrapper\RRF.WebClintWrapper.csproj" />
+    <ProjectReference Include="..\RRF.XDocumentWrapper\RRF.XDocumentWrapper.csproj" />
   </ItemGroup>
 
 </Project>

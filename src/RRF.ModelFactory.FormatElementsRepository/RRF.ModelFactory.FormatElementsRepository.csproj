@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FakeEFContext\FakeEFContext.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.FormateElementsRepository.Abstract\RRF.ModelFactory.FormateElementsRepository.Abstract.csproj" />
   </ItemGroup>
 

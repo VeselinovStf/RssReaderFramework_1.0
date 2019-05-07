@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FakeEFContext\FakeEFContext.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.ModelBindImage.Abstract\RRF.ModelFactory.ModelBindImage.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.RRFDbContext\RRF.RRFDbContext.csproj" />
   </ItemGroup>
 
 </Project>

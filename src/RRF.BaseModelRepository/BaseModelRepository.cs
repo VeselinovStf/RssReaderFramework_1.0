@@ -1,9 +1,9 @@
-﻿using FakeEFContext;
-using RRF.BaseModelRepository.Abstract;
+﻿using RRF.BaseModelRepository.Abstract;
 using RRF.Feed.Abstract;
 using RRF.FeedModel.Abstract;
 using RRF.FeedModelFactory.Abstract;
 using RRF.Models.BaseModel.Abstract;
+using RRF.RRFDbContext;
 using RRF.WebClientWrapper.Abstract;
 using RRF.XDocumentWrapper.Abstract;
 using System;
@@ -18,13 +18,13 @@ namespace RRF.BaseModelRepository
         private readonly IWebClientWrapper webClient;
         private readonly IXDocumentWrapper xDocument;
         private readonly IFeedModelFactory<IBaseModel> rssFeedModelFactory;
-        private readonly IFakeContext context;
+        private readonly RRFDbContext.RRFDbContext context;
 
         public BaseModelRepository(
             IWebClientWrapper webClient,
             IXDocumentWrapper xDocument,
             IFeedModelFactory<IBaseModel> rssFeedModelFactory,
-            IFakeContext context
+            RRFDbContext.RRFDbContext context
             )
         {
             this.webClient = webClient;
@@ -38,9 +38,10 @@ namespace RRF.BaseModelRepository
         {
             var RSSFeedData = new List<List<IBaseModel>>();
 
+            //TODO: Extract call to context
             foreach (var feed in this.context.Feeds)
             {
-                var RSSData = this.webClient.DownloadString(feed.Url);
+                var RSSData = this.webClient.DownloadString(feed.Feeds.Url);
 
                 var xml = this.xDocument.Parse(RSSData);
 

@@ -1,17 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FakeEFContext\FakeEFContext.csproj" />
     <ProjectReference Include="..\RFF.ModelFactory.XElementInterpretator.Abstract\RFF.ModelFactory.XElementInterpretator.Abstract.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.ModelBindDateTime.Abstract\RRF.ModelFactory.ModelBindDateTime.Abstract.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.ModelBindImage.Abstract\RRF.ModelFactory.ModelBindImage.Abstract.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.ModelBindString.Abstract\RRF.ModelFactory.ModelBindString.Abstract.csproj" />
     <ProjectReference Include="..\RRF.Models.BaseModel.Abstract\RRF.Models.BaseModel.Abstract.csproj" />
     <ProjectReference Include="..\RRF.Models.BaseModel\RRF.Models.BaseModel.csproj" />
+    <ProjectReference Include="..\RRF.RRFDbContext\RRF.RRFDbContext.csproj" />
   </ItemGroup>
 
 </Project>

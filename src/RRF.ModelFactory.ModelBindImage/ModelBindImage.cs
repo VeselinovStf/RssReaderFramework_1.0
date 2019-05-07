@@ -1,5 +1,6 @@
-﻿using FakeEFContext;
+﻿
 using RRF.ModelFactory.ModelBindImage.Abstract;
+using RRF.RRFDbContext;
 using System;
 using System.Text;
 using System.Xml.Linq;
@@ -8,9 +9,9 @@ namespace RRF.ModelFactory.ModelBindImage
 {
     public class ModelBindImage : IModelBindImage
     {
-        private readonly IFakeContext context;
+        private readonly RRFDbContext.RRFDbContext context;
 
-        public ModelBindImage(IFakeContext context)
+        public ModelBindImage(RRFDbContext.RRFDbContext context)
         {
             this.context = context;
         }
