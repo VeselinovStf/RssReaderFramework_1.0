@@ -6,8 +6,8 @@ namespace RRF.FeedRepository.Abstract
 {
     public interface IFeedRepository<T>
     {
-        Task<IEnumerable<IEnumerable<T>>> GetListedFeed(string descendantElementName);
+        IEnumerable<T> GetListedFeed();
 
-        Task<IEnumerable<T>> GetSpecificFeed(string RSSURL, string descendantElementName);
+        //Task<IEnumerable<T>> GetSpecificFeed(string RSSURL, string descendantElementName);
     }
 }

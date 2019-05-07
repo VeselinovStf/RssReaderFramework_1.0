@@ -6,7 +6,7 @@ namespace RRF.Models.BaseModel
     /// <summary>
     /// Base Model for getting all props from RSS Feed
     /// </summary>
-    public class BaseModel : IHeaderInfoElement, ILinkElement, IImageElement, IDateTimeElement
+    public class BaseModel : IBaseModel
     {
         public string Title { get; set; }
         public string Description { get; set; }

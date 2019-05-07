@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.FeedModelFactoryValidator.Abstract\RRF.FeedModelFactoryValidator.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.StringValidator.Abstract\RRF.ModelFactory.StringValidator.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.Models.BaseModel.Abstract\RRF.Models.BaseModel.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.Models.BaseModel\RRF.Models.BaseModel.csproj" />
+  </ItemGroup>
+
+</Project>

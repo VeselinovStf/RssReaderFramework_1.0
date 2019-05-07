@@ -5,8 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RRF.FeedModel.Abstract\RRF.FeedModel.Abstract.csproj" />
     <ProjectReference Include="..\RRF.FeedModelFactory.Abstract\RRF.FeedModelFactory.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.FeedModelFactoryValidator.Abstract\RRF.FeedModelFactoryValidator.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.ModelFactory.BaseModelFormat.Abstract\RRF.ModelFactory.BaseModelFormat.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.Models.BaseModel.Abstract\RRF.Models.BaseModel.Abstract.csproj" />
   </ItemGroup>
 
 </Project>
