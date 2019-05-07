@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.BaseModelAccess.Abstract\RRF.BaseModelAccess.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.BaseModelFeed\RRF.BaseModelFeed.csproj" />
+    <ProjectReference Include="..\RRF.BaseModelRepository.Abstract\RRF.BaseModelRepository.Abstract.csproj" />
+  </ItemGroup>
+
+</Project>

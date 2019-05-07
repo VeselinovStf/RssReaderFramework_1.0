@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RssReaderCore", "RssReaderC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Container", "Container", "{4C66E310-4C81-4FB7-AC65-F6A98D450DFD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StartUp", "StartUp", "{88B161E8-5B15-4FEB-B2B0-258B05DBC89F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Futures", "Futures", "{88B161E8-5B15-4FEB-B2B0-258B05DBC89F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{D07BDDF7-E47C-471C-8E67-FDFF2A4062A1}"
 EndProject
@@ -181,9 +181,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.FormateEle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.FormatElementsRepository", "RRF.ModelFactory.FormatElementsRepository\RRF.ModelFactory.FormatElementsRepository.csproj", "{47467108-8443-4002-973A-0C04556B517A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeEFContext", "FakeEFContext\FakeEFContext.csproj", "{4E0A1A85-5C26-475F-AEA1-176B904E7A5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeEFContext", "FakeEFContext\FakeEFContext.csproj", "{4E0A1A85-5C26-475F-AEA1-176B904E7A5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ModelFactory.BaseModelFormat", "RRF.ModelFactory.BaseModelFormat\RRF.ModelFactory.BaseModelFormat.csproj", "{F6FD4003-29F5-44A0-9C12-071568A1CF43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.BaseModelFormat", "RRF.ModelFactory.BaseModelFormat\RRF.ModelFactory.BaseModelFormat.csproj", "{F6FD4003-29F5-44A0-9C12-071568A1CF43}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XElement", "XElement", "{B0F5BD8F-FFFD-4368-ADFD-73E20952C150}"
 EndProject
@@ -195,9 +195,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Convertor", "Convertor", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseModel", "BaseModel", "{D3BEEB01-384F-46AA-8FAF-ED2A7C4792DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFF.ModelFactory.XElementInterpretator.Abstract", "RFF.ModelFactory.XElementInterpretator.Abstract\RFF.ModelFactory.XElementInterpretator.Abstract.csproj", "{C78B3F06-F090-4151-B947-E7C9697A0569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RFF.ModelFactory.XElementInterpretator.Abstract", "RFF.ModelFactory.XElementInterpretator.Abstract\RFF.ModelFactory.XElementInterpretator.Abstract.csproj", "{C78B3F06-F090-4151-B947-E7C9697A0569}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ModelFactory.BaseModelXElementInterpretator", "RRF.ModelFactory.BaseModelXElementInterpretator\RRF.ModelFactory.BaseModelXElementInterpretator.csproj", "{6C8D8DEC-4C58-4D49-AA26-BA1188025669}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.BaseModelXElementInterpretator", "RRF.ModelFactory.BaseModelXElementInterpretator\RRF.ModelFactory.BaseModelXElementInterpretator.csproj", "{6C8D8DEC-4C58-4D49-AA26-BA1188025669}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StringBind", "StringBind", "{8195F277-2D18-4A7B-839F-9696FDC2570C}"
 EndProject
@@ -205,23 +205,45 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DateTimeBind", "DateTimeBin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageBind", "ImageBind", "{92C9BFEE-33A5-41F2-BCCF-DA5D00A2C08A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ModelFactory.ModelBindString.Abstract", "RRF.ModelFactory.ModelBindString.Abstract\RRF.ModelFactory.ModelBindString.Abstract.csproj", "{3A25C0F6-8BF8-4058-A44D-E1807DA57620}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.ModelBindString.Abstract", "RRF.ModelFactory.ModelBindString.Abstract\RRF.ModelFactory.ModelBindString.Abstract.csproj", "{3A25C0F6-8BF8-4058-A44D-E1807DA57620}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ModelFactory.ModelBindString", "RRF.ModelFactory.ModelBindString\RRF.ModelFactory.ModelBindString.csproj", "{E5E2D602-2F95-4F76-AA18-4F1A8B83CA73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.ModelBindString", "RRF.ModelFactory.ModelBindString\RRF.ModelFactory.ModelBindString.csproj", "{E5E2D602-2F95-4F76-AA18-4F1A8B83CA73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ModelFactory.ModelBindImage.Abstract", "RRF.ModelFactory.ModelBindImage.Abstract\RRF.ModelFactory.ModelBindImage.Abstract.csproj", "{4CA0CD75-8674-4D3A-9FDB-22F38EE67339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.ModelBindImage.Abstract", "RRF.ModelFactory.ModelBindImage.Abstract\RRF.ModelFactory.ModelBindImage.Abstract.csproj", "{4CA0CD75-8674-4D3A-9FDB-22F38EE67339}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ModelFactory.ModelBindImage", "RRF.ModelFactory.ModelBindImage\RRF.ModelFactory.ModelBindImage.csproj", "{583301B0-89D4-4407-BE68-C9BFC9FE5D61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.ModelBindImage", "RRF.ModelFactory.ModelBindImage\RRF.ModelFactory.ModelBindImage.csproj", "{583301B0-89D4-4407-BE68-C9BFC9FE5D61}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseModel", "BaseModel", "{54125DF1-F4BD-484D-B1EC-486C684722EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.EFModels.BaseModel", "RRF.EFModels.BaseModel\RRF.EFModels.BaseModel.csproj", "{4D3581CD-8E5F-41E8-8870-44C347551910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.EFModels.BaseModel", "RRF.EFModels.BaseModel\RRF.EFModels.BaseModel.csproj", "{4D3581CD-8E5F-41E8-8870-44C347551910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ModelFactory.ModelBindDateTime.Abstract", "RRF.ModelFactory.ModelBindDateTime.Abstract\RRF.ModelFactory.ModelBindDateTime.Abstract.csproj", "{1CAE705E-11E2-49A5-BFB4-D49B89691670}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.ModelBindDateTime.Abstract", "RRF.ModelFactory.ModelBindDateTime.Abstract\RRF.ModelFactory.ModelBindDateTime.Abstract.csproj", "{1CAE705E-11E2-49A5-BFB4-D49B89691670}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ModelFactory.ModelBindDateTime", "RRF.ModelFactory.ModelBindDateTime\RRF.ModelFactory.ModelBindDateTime.csproj", "{BEE57995-4EF7-4F6C-8E44-29A17C073C68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ModelFactory.ModelBindDateTime", "RRF.ModelFactory.ModelBindDateTime\RRF.ModelFactory.ModelBindDateTime.csproj", "{BEE57995-4EF7-4F6C-8E44-29A17C073C68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.Core.Container", "RRF.Core.Container\RRF.Core.Container.csproj", "{0553614B-2E6D-4552-984E-8D60A476015A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.Core.Container", "RRF.Core.Container\RRF.Core.Container.csproj", "{0553614B-2E6D-4552-984E-8D60A476015A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.API", "RRF.API\RRF.API.csproj", "{2BD2395D-112D-467C-9951-22FBAB78353C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.InvokeMiddleware", "RRF.InvokeMiddleware\RRF.InvokeMiddleware.csproj", "{BFD712E6-BDC7-4543-9215-B30360166214}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccessPoint", "AccessPoint", "{B9CF47E6-50A5-474E-AE1C-696197678246}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseModelAccess", "BaseModelAccess", "{D4DB4A8E-C47A-4040-ACAD-2C5CDA7540B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.BaseModelAccess.Abstract", "RRF.BaseModelAccess.Abstract\RRF.BaseModelAccess.Abstract.csproj", "{337D9980-6417-4CD4-966E-58E23E5B6D83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Point", "Point", "{A520B61E-8EFA-4973-BB19-EA5DBCE1906C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{8F0F8E3B-3BF5-4A54-9C3F-824630DF15E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.BaseModelFeed.Abstract", "RRF.BaseModelFeed.Abstract\RRF.BaseModelFeed.Abstract.csproj", "{F4FB1DBE-32C7-4AAD-9D12-94197D371737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.BaseModelFeed", "RRF.BaseModelFeed\RRF.BaseModelFeed.csproj", "{EDE0919A-0FFD-44C6-8E92-2CE5CD8812C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.BaseModelAccess", "RRF.BaseModelAccess\RRF.BaseModelAccess.csproj", "{0126CBA9-DE96-42E6-9A84-512DC7EC8046}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A2FDAA64-E887-44B9-88E0-00D096070798}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -437,6 +459,30 @@ Global
 		{0553614B-2E6D-4552-984E-8D60A476015A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0553614B-2E6D-4552-984E-8D60A476015A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0553614B-2E6D-4552-984E-8D60A476015A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD2395D-112D-467C-9951-22FBAB78353C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD2395D-112D-467C-9951-22FBAB78353C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD2395D-112D-467C-9951-22FBAB78353C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD2395D-112D-467C-9951-22FBAB78353C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD712E6-BDC7-4543-9215-B30360166214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD712E6-BDC7-4543-9215-B30360166214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD712E6-BDC7-4543-9215-B30360166214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD712E6-BDC7-4543-9215-B30360166214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337D9980-6417-4CD4-966E-58E23E5B6D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337D9980-6417-4CD4-966E-58E23E5B6D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337D9980-6417-4CD4-966E-58E23E5B6D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337D9980-6417-4CD4-966E-58E23E5B6D83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4FB1DBE-32C7-4AAD-9D12-94197D371737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4FB1DBE-32C7-4AAD-9D12-94197D371737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4FB1DBE-32C7-4AAD-9D12-94197D371737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4FB1DBE-32C7-4AAD-9D12-94197D371737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE0919A-0FFD-44C6-8E92-2CE5CD8812C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE0919A-0FFD-44C6-8E92-2CE5CD8812C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE0919A-0FFD-44C6-8E92-2CE5CD8812C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE0919A-0FFD-44C6-8E92-2CE5CD8812C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0126CBA9-DE96-42E6-9A84-512DC7EC8046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0126CBA9-DE96-42E6-9A84-512DC7EC8046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0126CBA9-DE96-42E6-9A84-512DC7EC8046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0126CBA9-DE96-42E6-9A84-512DC7EC8046}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -549,6 +595,17 @@ Global
 		{1CAE705E-11E2-49A5-BFB4-D49B89691670} = {1E1354D2-FA62-41B1-A76B-7DFC0E4A0144}
 		{BEE57995-4EF7-4F6C-8E44-29A17C073C68} = {1E1354D2-FA62-41B1-A76B-7DFC0E4A0144}
 		{0553614B-2E6D-4552-984E-8D60A476015A} = {4C66E310-4C81-4FB7-AC65-F6A98D450DFD}
+		{2BD2395D-112D-467C-9951-22FBAB78353C} = {A2FDAA64-E887-44B9-88E0-00D096070798}
+		{BFD712E6-BDC7-4543-9215-B30360166214} = {88B161E8-5B15-4FEB-B2B0-258B05DBC89F}
+		{B9CF47E6-50A5-474E-AE1C-696197678246} = {DE9C2F2A-50A8-4713-8AAD-EB3A5670605C}
+		{D4DB4A8E-C47A-4040-ACAD-2C5CDA7540B8} = {B9CF47E6-50A5-474E-AE1C-696197678246}
+		{337D9980-6417-4CD4-966E-58E23E5B6D83} = {A520B61E-8EFA-4973-BB19-EA5DBCE1906C}
+		{A520B61E-8EFA-4973-BB19-EA5DBCE1906C} = {D4DB4A8E-C47A-4040-ACAD-2C5CDA7540B8}
+		{8F0F8E3B-3BF5-4A54-9C3F-824630DF15E2} = {D4DB4A8E-C47A-4040-ACAD-2C5CDA7540B8}
+		{F4FB1DBE-32C7-4AAD-9D12-94197D371737} = {8F0F8E3B-3BF5-4A54-9C3F-824630DF15E2}
+		{EDE0919A-0FFD-44C6-8E92-2CE5CD8812C6} = {8F0F8E3B-3BF5-4A54-9C3F-824630DF15E2}
+		{0126CBA9-DE96-42E6-9A84-512DC7EC8046} = {A520B61E-8EFA-4973-BB19-EA5DBCE1906C}
+		{A2FDAA64-E887-44B9-88E0-00D096070798} = {3F1AD0CF-BF70-4F1D-94DD-D03CC0063268}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30FC9563-F44D-425F-954C-47543FB38B98}

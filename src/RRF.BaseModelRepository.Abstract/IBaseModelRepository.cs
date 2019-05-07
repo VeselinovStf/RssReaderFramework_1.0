@@ -8,6 +8,6 @@ namespace RRF.BaseModelRepository.Abstract
 {
     public interface IBaseModelRepository
     {
-        Task<IEnumerable<IEnumerable<IBaseModel>>> GetListedFeed(IEnumerable<IFeedNode> rssAdresses);
+        Task<IEnumerable<IEnumerable<IBaseModel>>> GetListedFeed();
     }
 }

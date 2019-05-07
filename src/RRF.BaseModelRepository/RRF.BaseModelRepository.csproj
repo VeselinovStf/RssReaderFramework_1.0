@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FakeEFContext\FakeEFContext.csproj" />
     <ProjectReference Include="..\RRF.BaseModelRepository.Abstract\RRF.BaseModelRepository.Abstract.csproj" />
     <ProjectReference Include="..\RRF.Feed.Abstract\RRF.Feed.Abstract.csproj" />
     <ProjectReference Include="..\RRF.FeedModelFactory.Abstract\RRF.FeedModelFactory.Abstract.csproj" />
