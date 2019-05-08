@@ -17,7 +17,9 @@ namespace RRF.API.Controllers
         {
             this.baseAccess = baseAccess;
         }
-        // GET api/values
+
+        // GET api/values/{userId}
+        [Route("api/[controller]/{userId}")]
         [HttpGet]
         public async Task<ActionResult> Get(string userId)
         {
