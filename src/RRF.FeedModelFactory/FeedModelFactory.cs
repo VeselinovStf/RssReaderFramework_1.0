@@ -31,14 +31,16 @@ namespace RRF.FeedModelFactory
             this.modelFormatter = modelFormatter;
         }
 
-        public async Task<IEnumerable<IBaseModel>> Create(IEnumerable<XElement> elements)
+        public async Task<IEnumerable<IBaseModel>> Create(IEnumerable<XElement> elements, string userId)
         {
             IList<IBaseModel> RSSFeedData = new List<IBaseModel>();
             foreach (var e in elements)
             {
                 try
                 {
-                    var modelFromXElement = this.xElementToModel.XElementToModel(e);
+               
+
+                    var modelFromXElement = await this.xElementToModel.XElementToModel(e, userId);
 
                     RSSFeedData.Add(
                         this.modelFactoryValidator.ValidateRssFeedModel(

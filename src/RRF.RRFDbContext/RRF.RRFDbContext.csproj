@@ -1,18 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <Compile Remove="Migrations\20190508133536_Renaming models for key.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RRF.EFModels.BaseModel\RRF.EFModels.BaseModel.csproj" />
-    <ProjectReference Include="..\RRF.EFModels.FeedNodeModel\RRF.EFModels.FeedNodeModel.csproj" />
-    <ProjectReference Include="..\RRF.Model.ImageInterpretatorElement\RRF.Model.ImageInterpretatorElement.csproj" />
-    <ProjectReference Include="..\RRF.Models.FormatElement\RRF.Models.FormatElement.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.DateTimeWrapper.Abstract\RRF.DateTimeWrapper.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.EFModelsConfig\RRF.EFModelsConfig.csproj" />
+    <ProjectReference Include="..\RRF.EFModels\RRF.EFModels.csproj" />
+    <ProjectReference Include="..\RRF.EFSeed\RRF.EFSeed.csproj" />
+    <ProjectReference Include="..\RRF.Identity.Models.BaseModel\RRF.Identity.Models.BaseModel.csproj" />
   </ItemGroup>
 
 </Project>

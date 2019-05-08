@@ -20,11 +20,11 @@ namespace RRF.BaseModelAccess
             this.baseModelRepo = baseModelRepo;
         }
 
-        public async Task<IBaseModelFeed> GetFeed()
+        public async Task<IBaseModelFeed> GetFeed(string userId)
         {
             return new BaseModelFeed.BaseModelFeed()
             {
-                Feed = await this.baseModelRepo.GetListedFeed()
+                Feed = await this.baseModelRepo.GetListedFeed(userId)
             };
         }
     }

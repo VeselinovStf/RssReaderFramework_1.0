@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.EFRepository.Abstract\RRF.EFRepository.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.EFService.ItemModelService.Abstract\RRF.EFService.ItemModelService.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.Models.BaseModel\RRF.Models.BaseModel.csproj" />
+    <ProjectReference Include="..\RRF.RRFDbContext\RRF.RRFDbContext.csproj" />
+  </ItemGroup>
+
+</Project>

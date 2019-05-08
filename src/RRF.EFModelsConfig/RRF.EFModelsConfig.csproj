@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.EFModelsConfig.Abstract\RRF.EFModelsConfig.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.EFModels\RRF.EFModels.csproj" />
+  </ItemGroup>
+
+</Project>

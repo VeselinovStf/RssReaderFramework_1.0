@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.Identity.Models.BaseModel\RRF.Identity.Models.BaseModel.csproj" />
+    <ProjectReference Include="..\RRF.IdentityUtility.UserManagerUtility.Abstract\RRF.IdentityUtility.UserManagerUtility.Abstract.csproj" />
+  </ItemGroup>
+
+</Project>

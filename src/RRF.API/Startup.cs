@@ -28,7 +28,7 @@ namespace RRF.API
         public void ConfigureServices(IServiceCollection services)
         {
             RssReaderFrameworkConfigure
-                .GoRssReaderFrameworkToWork(services, "DatabaseName");
+                .GoRssReaderFrameworkToWork(services, Configuration.GetConnectionString("DevelopmentConnectionString"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -49,6 +49,7 @@ namespace RRF.API
             app.UseHttpsRedirection();
 
             app.UseRssReaderFramework();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

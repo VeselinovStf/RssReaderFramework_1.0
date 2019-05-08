@@ -27,6 +27,15 @@ using RRF.BaseModelRepository.Abstract;
 using RRF.DateTimeWrapper.Abstract;
 using RRF.WebClientWrapper.Abstract;
 using RRF.XDocumentWrapper.Abstract;
+using RRF.Identity.Models.BaseModel;
+using RRF.IdentityUtility.UserManagerUtility.Abstract;
+using RRF.IdentityUtility.UserManagerUtility;
+using RRF.IdentityUtility.SignInManagerUtility.Abstract;
+using RRF.IdentityUtility.SignInManagerUtility;
+using RRF.Identity.AccountManager.Abstract;
+using RRF.Identity.AccountManager;
+using System;
+using Microsoft.AspNetCore.Identity;
 
 namespace RRF.Core.Container
 {
@@ -36,6 +45,14 @@ namespace RRF.Core.Container
         {
             RegisterRssReaderFrameworkServices(service);
             RunRssReaderFrameworkDatabase(service, databaseName);
+            RunRssReaderFrameworkIdentity(service);
+        }
+
+        private static void RunRssReaderFrameworkIdentity(IServiceCollection service)
+        {
+            service.AddIdentity<BaseIdentityModel, IdentityRole>()
+               .AddEntityFrameworkStores<RRFDbContext.RRFDbContext>()
+               .AddDefaultTokenProviders();
         }
 
         private static void RunRssReaderFrameworkDatabase(IServiceCollection service, string databaseName)
@@ -75,6 +92,11 @@ namespace RRF.Core.Container
             service.AddScoped<IDateTimePars, DateTimeWrapper.DateTimeWrapper>();
             service.AddScoped<IWebClientWrapper, WebClintWrapper.WebClientWrapper>();
             service.AddScoped<IXDocumentWrapper, XDocumentWrapper.XDocumentWrapper>();
+            //Identity
+            service.AddScoped<IUserManagerUtility<BaseIdentityModel>, UserManagerUtility>();
+            service.AddScoped<ISignInManagerUtility<BaseIdentityModel>, SignInManagerUtility>();
+            service.AddScoped<IAccountManager<BaseIdentityModel>, AccountManager>();
+
         }
     }
 }

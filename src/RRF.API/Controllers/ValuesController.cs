@@ -19,9 +19,9 @@ namespace RRF.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public async Task<ActionResult> Get(string userId)
         {
-            return Ok(await this.baseAccess.GetFeed());
+            return Ok(await this.baseAccess.GetFeed(userId));
         }
 
         // GET api/values/5

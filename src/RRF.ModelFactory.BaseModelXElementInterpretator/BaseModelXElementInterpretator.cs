@@ -1,5 +1,6 @@
 ﻿
 using RFF.ModelFactory.XElementInterpretator.Abstract;
+using RRF.EFService.ItemModelService.Abstract;
 using RRF.ModelFactory.ModelBindDateTime.Abstract;
 using RRF.ModelFactory.ModelBindImage.Abstract;
 using RRF.ModelFactory.ModelBindString.Abstract;
@@ -8,6 +9,7 @@ using RRF.Models.BaseModel.Abstract;
 using RRF.RRFDbContext;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace RRF.ModelFactory.BaseModelXElementInterpretator
@@ -17,37 +19,38 @@ namespace RRF.ModelFactory.BaseModelXElementInterpretator
         private readonly IModelBindString xElementToString;
         private readonly IModelBindImage xElementToImageProps;
         private readonly IModelBindDateTime xElementToDateTime;
-        private readonly RRFDbContext.RRFDbContext context;
+        private readonly IItemModelService itemModelService;
 
         public BaseModelXElementInterpretator(
             IModelBindString xElementToString,
             IModelBindImage xElementToImageProps,
             IModelBindDateTime xElementToDateTime,
-            RRFDbContext.RRFDbContext context)
+            IItemModelService itemModelService
+         )
         {
             this.xElementToString = xElementToString;
             this.xElementToImageProps = xElementToImageProps;
             this.xElementToDateTime = xElementToDateTime;
-            this.context = context;
+            this.itemModelService = itemModelService;
         }
 
-        //TODO: get elements name from db
-        public IBaseModel XElementToModel(XElement x)
+       
+        public async Task<IBaseModel> XElementToModel(XElement x, string userId)
         {
-            var baseModel = this.context.BaseModel.Take(1);
-
+            
             try
             {
+                var baseModel = await this.itemModelService.GetItem(userId);
+
                 return new BaseModel()
                 {
-                    //TODO: Continue DB Development
-                    // TODO: link propertyes names for json config , so property name can be changed based pn user requirements
-                    //Title = this.xElementToString.GetElement(nameof(baseModel.Title).ToLower(), x),
-                    //LinkToCurrentElement = this.xElementToString.GetElement(nameof(baseModel.LinkToCurrentElement).ToLower(), x),
-                    //Description = this.xElementToString.GetElement(nameof(baseModel.Description).ToLower(), x),
-                    //PubDate = this.xElementToDateTime.Get(nameof(baseModel.PubDate).ToLower(), x),
-                    //ImageSRC = this.xElementToImageProps.GetFrom(nameof(baseModel.ImageSRC).ToLower(), x),
-                    
+
+                    Title = this.xElementToString.GetElement(nameof(baseModel.Title).ToLower(), x),
+                    LinkToCurrentElement = this.xElementToString.GetElement(nameof(baseModel.LinkToCurrentElement).ToLower(), x),
+                    Description = this.xElementToString.GetElement(nameof(baseModel.Description).ToLower(), x),
+                    PubDate = this.xElementToDateTime.Get(nameof(baseModel.PubDate).ToLower(), x),
+                    ImageSRC = this.xElementToImageProps.GetFrom(nameof(baseModel.ImageSRC).ToLower(), x),
+
                 };
             }
             catch (Exception ex)

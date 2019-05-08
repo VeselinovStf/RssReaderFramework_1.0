@@ -8,6 +8,6 @@ namespace RRF.BaseModelAccess.Abstract
 {
     public interface IBaseModelAccess
     {
-        Task<IBaseModelFeed> GetFeed();
+        Task<IBaseModelFeed> GetFeed(string userId);
     }
 }

@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,6 +20,13 @@
     <ProjectReference Include="..\RRF.FeedNodeRepository\RRF.FeedNodeRepository.csproj" />
     <ProjectReference Include="..\RRF.FeedRepository.Abstract\RRF.FeedRepository.Abstract.csproj" />
     <ProjectReference Include="..\RRF.Feed\RRF.Feed.csproj" />
+    <ProjectReference Include="..\RRF.Identity.AccountManager.Abstract\RRF.Identity.AccountManager.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.Identity.AccountManager\RRF.Identity.AccountManager.csproj" />
+    <ProjectReference Include="..\RRF.Identity.Models.BaseModel\RRF.Identity.Models.BaseModel.csproj" />
+    <ProjectReference Include="..\RRF.IdentityUtility.SignInManagerUtility.Abstract\RRF.IdentityUtility.SignInManagerUtility.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.IdentityUtility.SignInManagerUtility\RRF.IdentityUtility.SignInManagerUtility.csproj" />
+    <ProjectReference Include="..\RRF.IdentityUtility.UserManagerUtility.Abstract\RRF.IdentityUtility.UserManagerUtility.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.IdentityUtility.UserManagerUtility\RRF.IdentityUtility.UserManagerUtility.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.BaseModelFormat\RRF.ModelFactory.BaseModelFormat.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.BaseModelXElementInterpretator\RRF.ModelFactory.BaseModelXElementInterpretator.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.FormateElementsRepository.Abstract\RRF.ModelFactory.FormateElementsRepository.Abstract.csproj" />

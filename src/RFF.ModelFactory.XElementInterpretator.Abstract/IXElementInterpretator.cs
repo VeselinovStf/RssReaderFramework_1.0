@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace RFF.ModelFactory.XElementInterpretator.Abstract
 {
     public interface IXElementInterpretator<T>
     {
-        T XElementToModel(XElement element);
+        Task<T> XElementToModel(XElement element, string userId);
     }
 }

@@ -7,6 +7,6 @@ namespace RRF.FeedModelFactory.Abstract
 {
     public interface IFeedModelFactory<T>
     {
-        Task<IEnumerable<T>> Create(IEnumerable<XElement> elements);
+        Task<IEnumerable<T>> Create(IEnumerable<XElement> elements, string userId);
     }
 }
