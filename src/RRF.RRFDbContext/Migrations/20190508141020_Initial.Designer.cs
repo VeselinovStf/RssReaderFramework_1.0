@@ -10,8 +10,8 @@ using RRF.RRFDbContext;
 namespace RRF.RRFDbContext.Migrations
 {
     [DbContext(typeof(RRFDbContext))]
-    [Migration("20190508135012_Configuring relations 2")]
-    partial class Configuringrelations2
+    [Migration("20190508141020_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,14 +40,14 @@ namespace RRF.RRFDbContext.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "662ecf97-edae-4b05-9948-5ba39547227f",
+                            ConcurrencyStamp = "1cb4606d-5de8-4767-9a25-d4e7d8e7d772",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "38f0516a-0155-431a-a705-f8716590ef91",
+                            ConcurrencyStamp = "d1346382-f3d0-42fd-a8e6-4168fa73f6ad",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
@@ -95,19 +95,19 @@ namespace RRF.RRFDbContext.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "aa9d79a1-208c-4872-b249-b7ebe4699a1c",
+                            Id = "d6cfdf8f-cb6b-4c07-9808-017c267c3fe7",
                             APIKey = new Guid("00000000-0000-0000-0000-000000000000"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5e73ca09-eeed-4037-a745-aaf7dfd55c6c",
+                            ConcurrencyStamp = "aad45d26-3aa5-47c3-afee-6d39e8d147cc",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEA1+gRgAdej+lnXutOHfwMRnEQJaIhQoMNixhAZ2lS5GsxHdZdbkEQum6J2bzfHow==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHL++sNtd//BehZAucDWIKH25jDBoLauwT023uMMsLwa5JBNZEU0x/TtWZe+eottxQ==",
                             PhoneNumber = "+359359",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "1dbd7f42-f6dc-4042-a0cd-beb27228c777",
+                            SecurityStamp = "24410815-e608-4898-bb4e-df22a05f4173",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -241,8 +241,6 @@ namespace RRF.RRFDbContext.Migrations
 
                     b.Property<bool>("IsDeleted");
 
-                    b.Property<int>("MainElementId");
-
                     b.Property<DateTime?>("ModifiedOn");
 
                     b.Property<int>("RssChannelId");
@@ -250,9 +248,6 @@ namespace RRF.RRFDbContext.Migrations
                     b.Property<Guid>("UserId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MainElementId")
-                        .IsUnique();
 
                     b.HasIndex("RssChannelId");
 
@@ -277,9 +272,14 @@ namespace RRF.RRFDbContext.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("RssElementsSettingId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ImageFormatId");
+
+                    b.HasIndex("RssElementsSettingId")
+                        .IsUnique();
 
                     b.ToTable("XElementsModels");
                 });
@@ -318,11 +318,6 @@ namespace RRF.RRFDbContext.Migrations
 
             modelBuilder.Entity("RRF.EFModels.RssSettings", b =>
                 {
-                    b.HasOne("RRF.EFModels.XElementModel", "MainElement")
-                        .WithOne("RssElementsSetting")
-                        .HasForeignKey("RRF.EFModels.RssSettings", "MainElementId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("RRF.EFModels.RssChannel", "RssChannel")
                         .WithMany("Settings")
                         .HasForeignKey("RssChannelId")
@@ -334,6 +329,11 @@ namespace RRF.RRFDbContext.Migrations
                     b.HasOne("RRF.EFModels.ImageFormat", "ImageFormat")
                         .WithMany("ImageSearchTag")
                         .HasForeignKey("ImageFormatId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("RRF.EFModels.RssSettings", "RssElementsSetting")
+                        .WithOne("MainElement")
+                        .HasForeignKey("RRF.EFModels.XElementModel", "RssElementsSettingId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

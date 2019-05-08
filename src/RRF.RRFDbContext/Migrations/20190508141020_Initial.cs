@@ -9,31 +9,6 @@ namespace RRF.RRFDbContext.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "BaseIdentityModel",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(nullable: true),
-                    NormalizedUserName = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    NormalizedEmail = table.Column<string>(nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BaseIdentityModel", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Clients",
                 columns: table => new
                 {
@@ -120,7 +95,7 @@ namespace RRF.RRFDbContext.Migrations
                         column: x => x.RssChannelId,
                         principalTable: "RssChannels",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,7 +104,7 @@ namespace RRF.RRFDbContext.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    RssSettingId = table.Column<int>(nullable: false),
+                    ImageRssSettingId = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: true),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
@@ -139,11 +114,11 @@ namespace RRF.RRFDbContext.Migrations
                 {
                     table.PrimaryKey("PK_ImageFormats", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ImageFormats_RssSettings_RssSettingId",
-                        column: x => x.RssSettingId,
+                        name: "FK_ImageFormats_RssSettings_ImageRssSettingId",
+                        column: x => x.ImageRssSettingId,
                         principalTable: "RssSettings",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -157,7 +132,7 @@ namespace RRF.RRFDbContext.Migrations
                     LinkToCurrentElement = table.Column<string>(nullable: true),
                     ImageSRC = table.Column<string>(nullable: true),
                     PubDate = table.Column<DateTime>(nullable: false),
-                    RssSettingId = table.Column<int>(nullable: false),
+                    ItemRssSettingId = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: true),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
@@ -167,11 +142,11 @@ namespace RRF.RRFDbContext.Migrations
                 {
                     table.PrimaryKey("PK_ItemModels", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ItemModels_RssSettings_RssSettingId",
-                        column: x => x.RssSettingId,
+                        name: "FK_ItemModels_RssSettings_ItemRssSettingId",
+                        column: x => x.ItemRssSettingId,
                         principalTable: "RssSettings",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -183,7 +158,7 @@ namespace RRF.RRFDbContext.Migrations
                     BuildName = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     IsProcessed = table.Column<bool>(nullable: false),
-                    RssSettingsId = table.Column<int>(nullable: false),
+                    ModelRssSettingsId = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: true),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
@@ -193,8 +168,8 @@ namespace RRF.RRFDbContext.Migrations
                 {
                     table.PrimaryKey("PK_ModelElements", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ModelElements_RssSettings_RssSettingsId",
-                        column: x => x.RssSettingsId,
+                        name: "FK_ModelElements_RssSettings_ModelRssSettingsId",
+                        column: x => x.ModelRssSettingsId,
                         principalTable: "RssSettings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -207,7 +182,7 @@ namespace RRF.RRFDbContext.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    RssSettingId = table.Column<int>(nullable: false),
+                    RssElementsSettingId = table.Column<int>(nullable: false),
                     ImageFormatId = table.Column<int>(nullable: false),
                     CreatedOn = table.Column<DateTime>(nullable: true),
                     ModifiedOn = table.Column<DateTime>(nullable: true),
@@ -222,46 +197,46 @@ namespace RRF.RRFDbContext.Migrations
                         column: x => x.ImageFormatId,
                         principalTable: "ImageFormats",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_XElementsModels_RssSettings_RssSettingId",
-                        column: x => x.RssSettingId,
+                        name: "FK_XElementsModels_RssSettings_RssElementsSettingId",
+                        column: x => x.RssElementsSettingId,
                         principalTable: "RssSettings",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
                 table: "Clients",
                 columns: new[] { "Id", "APIKey", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "58d9138e-1137-40ba-9faf-41260bcc48ec", new Guid("00000000-0000-0000-0000-000000000000"), 0, "e3086729-c249-4a0a-ba3c-3cd525455316", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEJb4vMk0k6m4kpIezYsGsHNbtib0UJc2fL8rwPwMXaqj5zOwWMRegUF53knUQiskkQ==", "+359359", true, "53fc441a-1631-42c2-aae3-82d55390bd1e", false, "Admin" });
+                values: new object[] { "d6cfdf8f-cb6b-4c07-9808-017c267c3fe7", new Guid("00000000-0000-0000-0000-000000000000"), 0, "aad45d26-3aa5-47c3-afee-6d39e8d147cc", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEHL++sNtd//BehZAucDWIKH25jDBoLauwT023uMMsLwa5JBNZEU0x/TtWZe+eottxQ==", "+359359", true, "24410815-e608-4898-bb4e-df22a05f4173", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "IdentityRole",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2", "f09d8327-b61f-4efd-ae01-8ee924876b73", "Client", "CLIENT" });
+                values: new object[] { "2", "d1346382-f3d0-42fd-a8e6-4168fa73f6ad", "Client", "CLIENT" });
 
             migrationBuilder.InsertData(
                 table: "IdentityRole",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "ac440d00-26ed-4751-ba02-626a2a814b80", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "1", "1cb4606d-5de8-4767-9a25-d4e7d8e7d772", "Administrator", "ADMINISTRATOR" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImageFormats_RssSettingId",
+                name: "IX_ImageFormats_ImageRssSettingId",
                 table: "ImageFormats",
-                column: "RssSettingId",
+                column: "ImageRssSettingId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemModels_RssSettingId",
+                name: "IX_ItemModels_ItemRssSettingId",
                 table: "ItemModels",
-                column: "RssSettingId",
+                column: "ItemRssSettingId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ModelElements_RssSettingsId",
+                name: "IX_ModelElements_ModelRssSettingsId",
                 table: "ModelElements",
-                column: "RssSettingsId");
+                column: "ModelRssSettingsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RssChannels_ClientId",
@@ -279,17 +254,14 @@ namespace RRF.RRFDbContext.Migrations
                 column: "ImageFormatId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_XElementsModels_RssSettingId",
+                name: "IX_XElementsModels_RssElementsSettingId",
                 table: "XElementsModels",
-                column: "RssSettingId",
+                column: "RssElementsSettingId",
                 unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "BaseIdentityModel");
-
             migrationBuilder.DropTable(
                 name: "IdentityRole");
 

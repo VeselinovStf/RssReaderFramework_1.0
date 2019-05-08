@@ -38,14 +38,14 @@ namespace RRF.RRFDbContext.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "17c5f8e2-e3db-4c4a-9d5e-195033e2e15f",
+                            ConcurrencyStamp = "1cb4606d-5de8-4767-9a25-d4e7d8e7d772",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "fda3b7bb-9aed-48f5-a3d2-00fe18453e5e",
+                            ConcurrencyStamp = "d1346382-f3d0-42fd-a8e6-4168fa73f6ad",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
@@ -93,19 +93,19 @@ namespace RRF.RRFDbContext.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e3e966c9-5b0c-4f1c-974f-848837ffde93",
+                            Id = "d6cfdf8f-cb6b-4c07-9808-017c267c3fe7",
                             APIKey = new Guid("00000000-0000-0000-0000-000000000000"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "20890dfb-dbc1-4d42-a91e-f4d813eff801",
+                            ConcurrencyStamp = "aad45d26-3aa5-47c3-afee-6d39e8d147cc",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGLgGpmSeCfwWdMqDpwQBJVX8NUlRpOjX1LMrpIbhY5ZnqO+g67My/orSGX5qkT0+g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHL++sNtd//BehZAucDWIKH25jDBoLauwT023uMMsLwa5JBNZEU0x/TtWZe+eottxQ==",
                             PhoneNumber = "+359359",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "a0d6109f-4c5c-4d64-b015-13d5c0472144",
+                            SecurityStamp = "24410815-e608-4898-bb4e-df22a05f4173",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
