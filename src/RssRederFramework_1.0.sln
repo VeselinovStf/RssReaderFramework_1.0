@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28822.285
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterface", "{3E26E704-B3B1-4122-AD96-F3CD4D8A53A1}"
 EndProject
@@ -293,21 +293,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.EFService.RssChanelServ
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ItemModel", "ItemModel", "{26BBCD74-DB9A-4107-B014-EEA1B1EE0848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.EFService.ItemModelService.Abstract", "RRF.EFService.ItemModelService.Abstract\RRF.EFService.ItemModelService.Abstract.csproj", "{F0562FF1-F316-4DD3-AB5D-B04498975175}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.EFService.ItemModelService.Abstract", "RRF.EFService.ItemModelService.Abstract\RRF.EFService.ItemModelService.Abstract.csproj", "{F0562FF1-F316-4DD3-AB5D-B04498975175}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.EFService.ItemModelService", "RRF.EFService.ItemModelService\RRF.EFService.ItemModelService.csproj", "{8C5DC74F-0D6A-482D-839C-E085261AC6AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.EFService.ItemModelService", "RRF.EFService.ItemModelService\RRF.EFService.ItemModelService.csproj", "{8C5DC74F-0D6A-482D-839C-E085261AC6AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EFRepository", "EFRepository", "{84B5928A-40AC-4839-AB53-A5F46138CC04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.EFRepository.Abstract", "RRF.EFRepository.Abstract\RRF.EFRepository.Abstract.csproj", "{CC6AF4D4-7CC4-4163-A56B-066EDB389367}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.EFRepository.Abstract", "RRF.EFRepository.Abstract\RRF.EFRepository.Abstract.csproj", "{CC6AF4D4-7CC4-4163-A56B-066EDB389367}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RssSettings", "RssSettings", "{F5583575-E2C7-4112-AF6D-02D636D8DA84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.EFService.RssSettingsService.Abstrtact", "RRF.EFService.RssSettingsService.Abstrtact\RRF.EFService.RssSettingsService.Abstrtact.csproj", "{244D2301-9762-45D1-9032-8DADC35E0269}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.EFService.RssSettingsService.Abstrtact", "RRF.EFService.RssSettingsService.Abstrtact\RRF.EFService.RssSettingsService.Abstrtact.csproj", "{244D2301-9762-45D1-9032-8DADC35E0269}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.EFService.RssSettingsService", "RRF.EFService.RssSettingsService\RRF.EFService.RssSettingsService.csproj", "{73A765E6-5653-454C-8D9A-2EF33BB1E686}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.EFService.RssSettingsService", "RRF.EFService.RssSettingsService\RRF.EFService.RssSettingsService.csproj", "{73A765E6-5653-454C-8D9A-2EF33BB1E686}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.EFModels.Abstract", "RRF.EFModels.Abstract\RRF.EFModels.Abstract.csproj", "{981262BC-7919-4C8E-98C6-554759DAF37C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.EFModels.Abstract", "RRF.EFModels.Abstract\RRF.EFModels.Abstract.csproj", "{981262BC-7919-4C8E-98C6-554759DAF37C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.EFRepository", "RRF.EFRepository\RRF.EFRepository.csproj", "{166E7AF7-4506-4198-B600-4A04BEEF5A49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -627,6 +629,10 @@ Global
 		{981262BC-7919-4C8E-98C6-554759DAF37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{981262BC-7919-4C8E-98C6-554759DAF37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{981262BC-7919-4C8E-98C6-554759DAF37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{166E7AF7-4506-4198-B600-4A04BEEF5A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{166E7AF7-4506-4198-B600-4A04BEEF5A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{166E7AF7-4506-4198-B600-4A04BEEF5A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{166E7AF7-4506-4198-B600-4A04BEEF5A49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -782,6 +788,7 @@ Global
 		{244D2301-9762-45D1-9032-8DADC35E0269} = {F5583575-E2C7-4112-AF6D-02D636D8DA84}
 		{73A765E6-5653-454C-8D9A-2EF33BB1E686} = {F5583575-E2C7-4112-AF6D-02D636D8DA84}
 		{981262BC-7919-4C8E-98C6-554759DAF37C} = {3F537339-7B85-4CDE-8BD9-17A65F309E83}
+		{166E7AF7-4506-4198-B600-4A04BEEF5A49} = {84B5928A-40AC-4839-AB53-A5F46138CC04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30FC9563-F44D-425F-954C-47543FB38B98}

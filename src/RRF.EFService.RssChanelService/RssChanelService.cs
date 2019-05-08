@@ -13,23 +13,21 @@ namespace RRF.EFService.RssChanelService
 {
     public class RssChanelService : IRssChanelService
     {
-       
         private readonly IEFRepository<RssChannel> rssChannelRepository;
 
         public RssChanelService(IEFRepository<RssChannel> rssChannelRepository)
         {
-          
             this.rssChannelRepository = rssChannelRepository;
         }
+
         public async Task<IEnumerable<RssChannel>> GetAll(string userId)
         {
             Validator.StringIsNullOrEmpty(userId);
 
             var call = await this.rssChannelRepository.GetSetAsync();
 
-            return await call
-                .Where(c => c.UserId.ToString() == userId)
-                .ToListAsync();
+            return call
+                .Where(c => c.UserId.ToString() == userId);
         }
     }
 }
