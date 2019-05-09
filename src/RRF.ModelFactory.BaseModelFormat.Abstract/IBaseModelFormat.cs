@@ -5,6 +5,6 @@ namespace RRF.ModelFactory.BaseModelFormat.Abstract
 {
     public interface IBaseModelFormat<T>
     {
-        Task<T> Trim(T item);
+        Task<T> Trim(T item, string userId);
     }
 }

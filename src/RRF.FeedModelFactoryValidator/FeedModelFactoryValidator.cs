@@ -18,7 +18,7 @@ namespace RRF.FeedModelFactoryValidator
             this.stringValidator = stringValidator;
         }
 
-        //TODO: VALIDATE ALL
+       
         /// <summary>
         /// Validate every model field
         /// </summary>

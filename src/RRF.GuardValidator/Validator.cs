@@ -27,7 +27,7 @@ namespace RRF.GuardValidator
         {
             if (call == null)
             {
-                throw new NullEntityInDatabaseException("No RssSettings in Db");
+                throw new NullEntityInDatabaseException("No RssSettings in Db for this key!");
             }
         }
 

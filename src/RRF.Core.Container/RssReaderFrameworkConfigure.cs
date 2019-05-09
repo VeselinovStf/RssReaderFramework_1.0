@@ -106,7 +106,7 @@ namespace RRF.Core.Container
             service.AddScoped<IWebClientWrapper, WebClintWrapper.WebClientWrapper>(x => new WebClintWrapper.WebClientWrapper(new System.Net.WebClient()));
             service.AddScoped<IXDocumentWrapper, XDocumentWrapper.XDocumentWrapper>();
             //Identity
-            service.AddScoped<IUserManagerUtility<BaseIdentityModel>, UserManagerUtility>();
+            service.AddScoped<IUserManagerUtility<Client>, UserManagerUtility>();
             service.AddScoped<ISignInManagerUtility<BaseIdentityModel>, SignInManagerUtility>();
             service.AddScoped<IAccountManager<BaseIdentityModel>, AccountManager>();
             //Acces Points

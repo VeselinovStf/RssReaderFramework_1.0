@@ -43,7 +43,7 @@ namespace RRF.FeedModelFactory
 
                     RSSFeedData.Add(
                         this.modelFactoryValidator.ValidateRssFeedModel(
-                            await this.modelFormatter.Trim(modelFromXElement)
+                            await this.modelFormatter.Trim(modelFromXElement, userId)
                             )
                        );
                 }

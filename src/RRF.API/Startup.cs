@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using RRF.Core.Container;
 
 using RRF.InvokeMiddleware;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace RRF.API
 {
@@ -31,7 +32,26 @@ namespace RRF.API
             RssReaderFrameworkConfigure
                 .GoRssReaderFrameworkToWork(services, Configuration.GetConnectionString("DevelopmentConnectionString"));
 
-          
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "RRF API",
+                    Description = "A simple example ASP.NET Core Web API",
+                    TermsOfService = "None",
+                    Contact = new Contact
+                    {
+                        Name = "Veselinov Stefan",
+                        
+                    },
+                    License = new License
+                    {
+                        Name = "Use under LICX",
+                        Url = "https://example.com/license"
+                    }
+                });
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -50,10 +70,15 @@ namespace RRF.API
 
             app.UseHttpsRedirection();
 
-            app.UseRssReaderFramework();
+            //app.UseRssReaderFramework();
             app.UseAuthentication();
 
-            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseMvc();
         }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RRF.API.ViewModels.Identity;
+using RRF.EFModels;
 using RRF.Identity.AccountManager.Abstract;
 using RRF.Identity.Models.BaseModel;
 using System;
@@ -11,14 +12,16 @@ using System.Threading.Tasks;
 
 namespace RRF.API.Controllers
 {
-    public class AccountController : ControllerBase
+    [Route("api/Client/")]
+    [ApiController]
+    public class ClientController : ControllerBase
     {
-        private readonly IAccountManager<BaseIdentityModel> accountManager;
-        private readonly ILogger<AccountController> logger;
+        private readonly IAccountManager<Client> accountManager;
+        private readonly ILogger<ClientController> logger;
 
-        public AccountController(
-            IAccountManager<BaseIdentityModel> accountManager,
-            ILogger<AccountController> logger)
+        public ClientController(
+            IAccountManager<Client> accountManager,
+            ILogger<ClientController> logger)
         {
             this.accountManager = accountManager;
             this.logger = logger;
@@ -26,7 +29,7 @@ namespace RRF.API.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]      
         public async Task<IActionResult> Register([FromBody]RegisterViewModel model, string returnUrl = null)
         {
             if (ModelState.IsValid)
@@ -41,7 +44,7 @@ namespace RRF.API.Controllers
 
                     var signUser = await this.accountManager.SignInAsync(user, isPersistent: false);
 
-                    return Ok(model);
+                    return Ok(user);
                 }
                 catch (Exception ex)
                 {

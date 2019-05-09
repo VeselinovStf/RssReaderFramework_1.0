@@ -32,7 +32,6 @@ namespace RRF.BaseModelAccess
             }
             catch (NullEntityInDatabaseException ex)
             {
-
                 throw new ArgumentException(ex.Message);
             }
             catch (Exception ex)

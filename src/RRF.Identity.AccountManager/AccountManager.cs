@@ -1,4 +1,5 @@
-﻿using RRF.GuardValidator;
+﻿using RRF.EFModels;
+using RRF.GuardValidator;
 using RRF.Identity.AccountManager.Abstract;
 using RRF.Identity.Models.BaseModel;
 using RRF.IdentityUtility.SignInManagerUtility.Abstract;
@@ -65,7 +66,7 @@ namespace RRF.Identity.AccountManager
             Validator.StringIsNullOrEmpty(userName);
             Validator.StringIsNullOrEmpty(password);
 
-            var user = new BaseIdentityModel { UserName = userName, Email = email };
+            var user = new Client { UserName = userName, Email = email , APIKey = Guid.NewGuid()};
 
             try
             {

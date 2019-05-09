@@ -8,12 +8,16 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\RRF.BaseModelAccess.Abstract\RRF.BaseModelAccess.Abstract.csproj" />
     <ProjectReference Include="..\RRF.Core.Container\RRF.Core.Container.csproj" />
     <ProjectReference Include="..\RRF.InvokeMiddleware\RRF.InvokeMiddleware.csproj" />
+    <ProjectReference Include="..\RRF.Web\RRF.Web.csproj" />
   </ItemGroup>
 
 </Project>
