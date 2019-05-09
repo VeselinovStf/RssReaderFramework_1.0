@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RFF.ModelFactory.XElementInterpretator.Abstract\RFF.ModelFactory.XElementInterpretator.Abstract.csproj" />
     <ProjectReference Include="..\RRF.EFService.ItemModelService.Abstract\RRF.EFService.ItemModelService.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.GuarValidator.CustomExceptions\RRF.GuarValidator.CustomExceptions.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.ModelBindDateTime.Abstract\RRF.ModelFactory.ModelBindDateTime.Abstract.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.ModelBindImage.Abstract\RRF.ModelFactory.ModelBindImage.Abstract.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.ModelBindString.Abstract\RRF.ModelFactory.ModelBindString.Abstract.csproj" />

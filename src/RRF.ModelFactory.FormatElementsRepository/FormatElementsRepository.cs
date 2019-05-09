@@ -1,13 +1,27 @@
 ﻿
+using RRF.EFService.FormatElementsService.Abstract;
 using RRF.ModelFactory.FormateElementsRepository.Abstract;
+using RRF.RRFDbContext;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RRF.ModelFactory.FormatElementsRepository
 {
-    public class FormatElementsRepository //: IFormateElementsRepository
+    public class FormatElementsRepository : IFormateElementsRepository
     {
+        private readonly IFormatElementsService formatElementsService;
+
+        public FormatElementsRepository(IFormatElementsService formatElementsService)
+        {
+            this.formatElementsService = formatElementsService;
+        }
+
+        public IList<string> GetFormatElements()
+        {
+            throw new NotImplementedException();
+        }
+
         //private readonly IFakeContext context;
 
         //public FormatElementsRepository(IFakeContext context)
@@ -20,9 +34,12 @@ namespace RRF.ModelFactory.FormatElementsRepository
         //    return this.context.FormatElements;
         //}
 
-        public  Task<IList<string>> GetFormatElementsAsync()
+     
+        public async Task<IList<string>> GetFormatElementsAsync(string userId)
         {
-            throw new NotImplementedException("GetFormatElementsAsync is not implemented !!!");
+            var elements = await this.formatElementsService.GetFormatElementsAsync(userId);
+
+            return elements;
         }
     }
 }

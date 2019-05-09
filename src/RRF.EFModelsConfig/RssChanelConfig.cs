@@ -12,9 +12,12 @@ namespace RRF.EFModelsConfig
     {
         public void Configure(EntityTypeBuilder<RssChannel> builder)
         {
-            builder.HasMany(rc => rc.Settings)
+            builder
+                .HasKey(c => c.Id);
+
+            builder.HasOne(s => s.RssSeting)
                 .WithOne(s => s.RssChannel)
-                .HasForeignKey(s => s.RssChannelId)
+                .HasForeignKey<RssSetting>(s => s.RssChanel_Id)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

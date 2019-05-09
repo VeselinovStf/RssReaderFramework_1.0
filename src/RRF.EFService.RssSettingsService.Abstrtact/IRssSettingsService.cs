@@ -7,6 +7,6 @@ namespace RRF.EFService.RssSettingsService.Abstrtact
 {
     public interface IRssSettingsService
     {
-        Task<XElementModel> GetXElementDescendant(string userId);
+        Task<DescendingElement> GetXElementDescendant(string userId);
     }
 }

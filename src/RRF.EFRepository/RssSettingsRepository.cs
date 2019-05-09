@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RRF.EFRepository
 {
-    public class RssSettingsRepository : IEFRepository<RssSettings>
+    public class RssSettingsRepository : IEFRepository<RssSetting>
     {
         private readonly RRFDbContext.RRFDbContext dbContext;
 
@@ -18,18 +18,21 @@ namespace RRF.EFRepository
             this.dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<RssSettings>> GetSetAsync()
+        public async Task<IEnumerable<RssSetting>> GetSetAsync(string id)
         {
             return await this.dbContext.RssSettings.ToListAsync();
         }
 
-        public async Task<RssSettings> GetSingleAsync(string rssSetting)
+        public async Task<RssSetting> GetSingleAsync(string rssSetting)
         {
             Validator.StringIsNullOrEmpty(rssSetting);
 
-            return await this.dbContext
+            var userSettings = await this.dbContext
                 .RssSettings
-                .FirstOrDefaultAsync(s => s.UserId.ToString() == rssSetting);
+                .Include(x => x.DescendantElement)
+                .FirstOrDefaultAsync(s => s.ClientId.ToString() == rssSetting);
+
+            return userSettings;
         }
     }
 }

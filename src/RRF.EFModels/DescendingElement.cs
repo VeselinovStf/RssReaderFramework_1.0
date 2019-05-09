@@ -5,15 +5,19 @@ using System.Text;
 
 namespace RRF.EFModels
 {
-    public class ImageFormat : IEntity, IModifiable, IDeletable
+    public class DescendingElement : IEntity, IElement, IModifiable, IDeletable
     {
         public int Id { get; set; }
-        public IEnumerable<XElementModel> ImageSearchTag { get; set; }
 
-        public int ImageRssSettingId { get; set; }
+        public string Name { get; set; }
 
-        public RssSettings ImageRssSetting { get; set; }
+        // Relations
+        // RssSetting relation - DescendantElement
+        public int? RssSettingDescendantElement_Id { get; set; }
 
+        public RssSetting RssSettingDescendantElement { get; set; }
+
+        // IModifiable , IDeletable
         public DateTime? CreatedOn { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public bool IsDeleted { get; set; }

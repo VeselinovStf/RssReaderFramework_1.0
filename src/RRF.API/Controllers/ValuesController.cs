@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RRF.BaseModelAccess.Abstract;
 
 namespace RRF.API.Controllers
 {
+  
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -19,20 +21,14 @@ namespace RRF.API.Controllers
         }
 
         // GET api/values/{userId}
-        [Route("api/[controller]/{userId}")]
+        
         [HttpGet]
-        public async Task<ActionResult> Get(string userId)
+        public async Task<ActionResult> Get()
         {
-            return Ok(await this.baseAccess.GetFeed(userId));
+            return Ok(await this.baseAccess.GetFeed("baa0d4c2-1589-4378-be1c-238612953ae1"));
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
+    
         // POST api/values
         [HttpPost]
         public void Post([FromBody] string value)

@@ -8,6 +8,7 @@
     <ProjectReference Include="..\RRF.EFModels\RRF.EFModels.csproj" />
     <ProjectReference Include="..\RRF.EFRepository.Abstract\RRF.EFRepository.Abstract.csproj" />
     <ProjectReference Include="..\RRF.EFService.RssSettingsService.Abstrtact\RRF.EFService.RssSettingsService.Abstrtact.csproj" />
+    <ProjectReference Include="..\RRF.GuardValidator\RRF.GuardValidator.csproj" />
   </ItemGroup>
 
 </Project>

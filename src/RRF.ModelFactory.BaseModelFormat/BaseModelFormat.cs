@@ -20,7 +20,8 @@ namespace RRF.ModelFactory.BaseModelFormat
         }
         public async Task<IBaseModel> Trim(IBaseModel model)
         {
-            foreach (var trimElement in await this.formatElementsProvider.GetFormatElementsAsync())
+            //TODo: REMOVE THIS STERING
+            foreach (var trimElement in await this.formatElementsProvider.GetFormatElementsAsync("baa0d4c2-1589-4378-be1c-238612953ae1"))
             {
                 model.Description = model.Description.Replace(trimElement, "").Trim();
                 model.LinkToCurrentElement = model.LinkToCurrentElement.Replace(trimElement, "").Trim();

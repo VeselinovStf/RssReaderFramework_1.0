@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RRF.Model.GeneratedModels\RRF.Model.GeneratedModels.csproj" />
     <ProjectReference Include="..\RRF.Models.BaseModel.Abstract\RRF.Models.BaseModel.Abstract.csproj" />
   </ItemGroup>
 

@@ -9,4 +9,8 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.EFModels.Abstract\RRF.EFModels.Abstract.csproj" />
+  </ItemGroup>
+
 </Project>

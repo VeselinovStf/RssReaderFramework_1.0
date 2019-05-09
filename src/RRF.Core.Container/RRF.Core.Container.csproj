@@ -13,8 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RRF.BaseModelAccess\RRF.BaseModelAccess.csproj" />
     <ProjectReference Include="..\RRF.BaseModelRepository\RRF.BaseModelRepository.csproj" />
     <ProjectReference Include="..\RRF.DateTimeWrapper\RRF.DateTimeWrapper.csproj" />
+    <ProjectReference Include="..\RRF.EFRepository\RRF.EFRepository.csproj" />
+    <ProjectReference Include="..\RRF.EFService.FormatElementService\RRF.EFService.FormatElementService.csproj" />
+    <ProjectReference Include="..\RRF.EFService.ItemModelService\RRF.EFService.ItemModelService.csproj" />
+    <ProjectReference Include="..\RRF.EFService.RssChanelService\RRF.EFService.RssChanelService.csproj" />
+    <ProjectReference Include="..\RRF.EFService.RssSettingsService\RRF.EFService.RssSettingsService.csproj" />
     <ProjectReference Include="..\RRF.FeedModelFactoryValidator\RRF.FeedModelFactoryValidator.csproj" />
     <ProjectReference Include="..\RRF.FeedModelFactory\RRF.FeedModelFactory.csproj" />
     <ProjectReference Include="..\RRF.FeedNodeRepository\RRF.FeedNodeRepository.csproj" />

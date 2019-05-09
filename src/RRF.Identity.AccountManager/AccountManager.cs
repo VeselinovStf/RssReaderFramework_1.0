@@ -23,7 +23,8 @@ namespace RRF.Identity.AccountManager
             this.userManagerUtility = userManagerUtility;
             this.signInManagerUtility = signInManagerUtility;
         }
-        public async Task<bool> AddToRole(BaseIdentityModel user, string role)
+
+        public async Task<bool> AddToRoleAsync(BaseIdentityModel user, string role)
         {
             try
             {
@@ -33,28 +34,32 @@ namespace RRF.Identity.AccountManager
             }
             catch (Exception ex)
             {
-
                 throw new ArgumentException("Can't add to role");
             }
-            
         }
 
         public async Task<bool> PasswordSignInAsync(string email, string password, bool rememberME, bool lockoutOnFailure = true)
         {
             try
             {
-                var result = await this.signInManagerUtility.PasswordSignInAsync(email,  password,  rememberME,  lockoutOnFailure);
+                var result = await this.signInManagerUtility.PasswordSignInAsync(email, password, rememberME, lockoutOnFailure);
 
                 return true;
             }
             catch (Exception ex)
             {
-
                 throw new ArgumentException("Can't Sign in");
             }
         }
 
-        public async Task<bool> Register(string email, string userName, string password)
+        /// <summary>
+        /// Creates new user
+        /// </summary>
+        /// <param name="email">User Email from Form</param>
+        /// <param name="userName">User UserName from Form</param>
+        /// <param name="password">User Password from form</param>
+        /// <returns></returns>
+        public async Task<BaseIdentityModel> Register(string email, string userName, string password)
         {
             Validator.StringIsNullOrEmpty(email);
             Validator.StringIsNullOrEmpty(userName);
@@ -68,21 +73,16 @@ namespace RRF.Identity.AccountManager
 
                 if (result.Succeeded)
                 {
-                    return true;
+                    return user;
                 }
 
-                return false;
-
+                throw new ArgumentException("Account creation fails");
             }
             catch (Exception ex)
             {
-
                 throw new ArgumentException("Can't register user");
             }
-                              
         }
-
-      
 
         public async Task<bool> SignInAsync(BaseIdentityModel user, bool isPersistent = false)
         {
@@ -94,7 +94,6 @@ namespace RRF.Identity.AccountManager
             }
             catch (Exception ex)
             {
-
                 throw new ArgumentException("Can't sign in with role");
             }
         }
@@ -109,7 +108,6 @@ namespace RRF.Identity.AccountManager
             }
             catch (Exception)
             {
-
                 throw new ArgumentException("Can't Sign out");
             }
         }

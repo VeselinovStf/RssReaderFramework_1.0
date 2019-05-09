@@ -15,7 +15,7 @@ namespace RRF.EFModelsConfig
         public void Configure(EntityTypeBuilder<Client> builder)
         {
             builder.HasMany(c => c.Channels)
-                .WithOne(cl => (Client)cl.Client)
+                .WithOne(cl => cl.Client)
                 .HasForeignKey(c => c.ClientId)
                 .OnDelete(DeleteBehavior.Restrict);
         }

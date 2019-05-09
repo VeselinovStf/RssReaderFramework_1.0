@@ -18,7 +18,7 @@ namespace RRF.EFRepository
             this.dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<RssChannel>> GetSetAsync()
+        public async Task<IEnumerable<RssChannel>> GetSetAsync(string id)
         {
             return await this.dbContext.RssChannels.ToListAsync();
         }

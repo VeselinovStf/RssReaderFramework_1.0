@@ -5,8 +5,6 @@ using RRF.EFModels;
 using RRF.EFModels.Abstract;
 using RRF.EFModelsConfig;
 using RRF.EFSeed;
-using RRF.Identity.Models.BaseModel;
-
 using System;
 using System.Linq;
 using System.Threading;
@@ -20,11 +18,11 @@ namespace RRF.RRFDbContext
 
         public DbSet<Client> Clients { get; set; }
         public DbSet<RssChannel> RssChannels { get; set; }
-        public DbSet<RssSettings> RssSettings { get; set; }
+        public DbSet<RssSetting> RssSettings { get; set; }
         public DbSet<XElementModel> XElementsModels { get; set; }
         public DbSet<ModelElement> ModelElements { get; set; }
-        public DbSet<ItemModel> ItemModels { get; set; }
-        public DbSet<ImageFormat> ImageFormats { get; set; }
+        public DbSet<ImageElement> ImageElements { get; set; }
+        public DbSet<DescendingElement> DescendingElements { get; set; }
 
         public RRFDbContext()
         {
@@ -37,9 +35,14 @@ namespace RRF.RRFDbContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<IdentityRole>().HasData(this.SeedDefaultRoles());
+           builder.Entity<IdentityRole>().HasData(this.SeedDefaultRoles());
 
-            //builder.Entity<RssChannel>().HasData(EFSeed.EFSeed.SeedRssChannels());
+            builder.Entity<Client>().HasData(EFSeed.EFSeed.SeedDefaultClient());
+            builder.Entity<RssChannel>().HasData(EFSeed.EFSeed.SeedRssChannels());
+            builder.Entity<RssSetting>().HasData(EFSeed.EFSeed.SeedRssSettings());
+            builder.Entity<DescendingElement>().HasData(EFSeed.EFSeed.SeedDescendantElements());
+            builder.Entity<ModelElement>().HasData(EFSeed.EFSeed.SeedModelElements());
+            builder.Entity<XElementModel>().HasData(EFSeed.EFSeed.SeedXElementsModels());
 
             this.ApplyModelConfigurations(builder);
             this.SeedDefaultAdmin(builder);
@@ -53,9 +56,9 @@ namespace RRF.RRFDbContext
         private void ApplyModelConfigurations(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ClientConfig());
-            builder.ApplyConfiguration(new RssSettingsConfig());
-            builder.ApplyConfiguration(new ImageFormatConfig());
+            builder.ApplyConfiguration(new RssSettingsConfig());     
             builder.ApplyConfiguration(new RssChanelConfig());
+           
         }
 
         public override int SaveChanges()

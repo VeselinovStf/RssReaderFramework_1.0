@@ -8,6 +8,7 @@
     <ProjectReference Include="..\RRF.BaseModelAccess.Abstract\RRF.BaseModelAccess.Abstract.csproj" />
     <ProjectReference Include="..\RRF.BaseModelFeed\RRF.BaseModelFeed.csproj" />
     <ProjectReference Include="..\RRF.BaseModelRepository.Abstract\RRF.BaseModelRepository.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.GuarValidator.CustomExceptions\RRF.GuarValidator.CustomExceptions.csproj" />
   </ItemGroup>
 
 </Project>

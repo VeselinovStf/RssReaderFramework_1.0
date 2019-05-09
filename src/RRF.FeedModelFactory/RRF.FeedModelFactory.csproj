@@ -13,6 +13,7 @@
     <ProjectReference Include="..\RRF.FeedModel.Abstract\RRF.FeedModel.Abstract.csproj" />
     <ProjectReference Include="..\RRF.FeedModelFactory.Abstract\RRF.FeedModelFactory.Abstract.csproj" />
     <ProjectReference Include="..\RRF.FeedModelFactoryValidator.Abstract\RRF.FeedModelFactoryValidator.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.GuarValidator.CustomExceptions\RRF.GuarValidator.CustomExceptions.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.BaseModelFormat.Abstract\RRF.ModelFactory.BaseModelFormat.Abstract.csproj" />
     <ProjectReference Include="..\RRF.Models.BaseModel.Abstract\RRF.Models.BaseModel.Abstract.csproj" />
   </ItemGroup>

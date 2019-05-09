@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RRF.EFService.FormatElementsService.Abstract\RRF.EFService.FormatElementsService.Abstract.csproj" />
     <ProjectReference Include="..\RRF.ModelFactory.FormateElementsRepository.Abstract\RRF.ModelFactory.FormateElementsRepository.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.RRFDbContext\RRF.RRFDbContext.csproj" />
   </ItemGroup>
 
 </Project>

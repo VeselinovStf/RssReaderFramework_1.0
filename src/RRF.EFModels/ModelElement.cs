@@ -1,24 +1,30 @@
 ﻿using RRF.EFModels.Abstract;
+using RRF.Models.BaseModel.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RRF.EFModels
 {
     public class ModelElement : IEntity, IModifiable, IDeletable
     {
+        // IEntity
         public int Id { get; set; }
-        public string BuildName { get; set; }
-        public string Name { get; set; }
-        public bool IsProcessed { get; set; }
+        //IBaseModel
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string LinkToCurrentElement { get; set; }
+        public string ImageSRC { get; set; }
+        public string PubDate { get; set; }
 
-        public int ModelRssSettingsId { get; set; }
+        // RssSetting relation - RssDisplay model relation
+        public int RssSettingDisplayModelElementId { get; set; }
 
-        public RssSettings RssSetting { get; set; }
+        public RssSetting RssSettingDisplayModelElement { get; set; }
 
+        // IModifiable , IDeletable
         public DateTime? CreatedOn { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedOn { get; set; }
+     
     }
 }

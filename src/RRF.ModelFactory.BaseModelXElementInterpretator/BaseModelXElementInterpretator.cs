@@ -1,6 +1,7 @@
 ﻿
 using RFF.ModelFactory.XElementInterpretator.Abstract;
 using RRF.EFService.ItemModelService.Abstract;
+using RRF.GuarValidator.CustomExceptions;
 using RRF.ModelFactory.ModelBindDateTime.Abstract;
 using RRF.ModelFactory.ModelBindImage.Abstract;
 using RRF.ModelFactory.ModelBindString.Abstract;
@@ -37,7 +38,7 @@ namespace RRF.ModelFactory.BaseModelXElementInterpretator
        
         public async Task<IBaseModel> XElementToModel(XElement x, string userId)
         {
-            
+            //TODo : FIX THIS LOOPED CALL
             try
             {
                 var baseModel = await this.itemModelService.GetItem(userId);
@@ -45,13 +46,17 @@ namespace RRF.ModelFactory.BaseModelXElementInterpretator
                 return new BaseModel()
                 {
 
-                    Title = this.xElementToString.GetElement(nameof(baseModel.Title).ToLower(), x),
-                    LinkToCurrentElement = this.xElementToString.GetElement(nameof(baseModel.LinkToCurrentElement).ToLower(), x),
-                    Description = this.xElementToString.GetElement(nameof(baseModel.Description).ToLower(), x),
-                    PubDate = this.xElementToDateTime.Get(nameof(baseModel.PubDate).ToLower(), x),
-                    ImageSRC = this.xElementToImageProps.GetFrom(nameof(baseModel.ImageSRC).ToLower(), x),
+                    Title = this.xElementToString.GetElement(baseModel.Title.ToLower(), x),
+                    LinkToCurrentElement = this.xElementToString.GetElement(baseModel.LinkToCurrentElement.ToLower(), x),
+                    Description = this.xElementToString.GetElement(baseModel.Description.ToLower(), x),
+                    PubDate = this.xElementToDateTime.Get(baseModel.PubDate, x),
+                    ImageSRC = this.xElementToImageProps.GetFrom(baseModel.ImageSRC.ToLower(), x),
 
                 };
+            }
+            catch (NullEntityInDatabaseException ex)
+            {
+                throw new ArgumentException(ex.Message);
             }
             catch (Exception ex)
             {

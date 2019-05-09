@@ -1,6 +1,8 @@
 ﻿using RRF.EFModels;
 using RRF.EFRepository.Abstract;
 using RRF.EFService.ItemModelService.Abstract;
+using RRF.GuardValidator;
+using RRF.Model.GeneratedModels;
 using RRF.Models.BaseModel;
 using RRF.Models.BaseModel.Abstract;
 using RRF.RRFDbContext;
@@ -11,17 +13,19 @@ namespace RRF.EFService.ItemModelService
 {
     public class ItemModelService : IItemModelService
     {
-        private readonly IEFRepository<ItemModel> itemModelRepository;
+        private readonly IEFRepository<ModelElement> itemModelRepository;
 
-        public ItemModelService(IEFRepository<ItemModel> itemModelRepository)
+        public ItemModelService(IEFRepository<ModelElement> itemModelRepository)
         {
             this.itemModelRepository = itemModelRepository;
         }
-        public async Task<IBaseModel> GetItem(string userId)
+        public async Task<BaseGeneratedModel> GetItem(string userId)
         {
             var call = await this.itemModelRepository.GetSingleAsync(userId);
 
-            return new BaseModel()
+            Validator.ItemModelObjectIsNull(call);
+
+            return new BaseGeneratedModel()
             {
                 Description = call.Description,
                 ImageSRC = call.ImageSRC,

@@ -38,14 +38,14 @@ namespace RRF.RRFDbContext.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "1cb4606d-5de8-4767-9a25-d4e7d8e7d772",
+                            ConcurrencyStamp = "8a139774-c379-47e1-8341-18aed8775fd2",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "d1346382-f3d0-42fd-a8e6-4168fa73f6ad",
+                            ConcurrencyStamp = "a1a25ac6-9d71-411a-9daf-d139fe85efe0",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
@@ -93,25 +93,42 @@ namespace RRF.RRFDbContext.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d6cfdf8f-cb6b-4c07-9808-017c267c3fe7",
+                            Id = "baa0d4c2-1589-4378-be1c-238612953ae1",
                             APIKey = new Guid("00000000-0000-0000-0000-000000000000"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "aad45d26-3aa5-47c3-afee-6d39e8d147cc",
+                            ConcurrencyStamp = "2f5293c2-730f-43d5-b19b-858140548fb3",
+                            Email = "client@mail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "CLIENT@MAIL.COM",
+                            NormalizedUserName = "CLIENT@MAIL.COM",
+                            PhoneNumber = "+359359",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "470080ec-4d5d-4fa2-abe0-32981be9d610",
+                            TwoFactorEnabled = false,
+                            UserName = "Client"
+                        },
+                        new
+                        {
+                            Id = "f2916468-bfc0-4746-a227-58acc9c943d2",
+                            APIKey = new Guid("00000000-0000-0000-0000-000000000000"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "73153bae-0ef6-4762-bd18-45089d4767ea",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHL++sNtd//BehZAucDWIKH25jDBoLauwT023uMMsLwa5JBNZEU0x/TtWZe+eottxQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH4nuNBhB3FtyQJyBPm8A7gYm0whJq4siaRv2cAxme+2qyp7utQN3pm9dlD0ijW/KA==",
                             PhoneNumber = "+359359",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "24410815-e608-4898-bb4e-df22a05f4173",
+                            SecurityStamp = "1ac81dcb-2e60-4ae2-ab89-7252ac05854a",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
                 });
 
-            modelBuilder.Entity("RRF.EFModels.ImageFormat", b =>
+            modelBuilder.Entity("RRF.EFModels.DescendingElement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -121,21 +138,62 @@ namespace RRF.RRFDbContext.Migrations
 
                     b.Property<DateTime?>("DeletedOn");
 
-                    b.Property<int>("ImageRssSettingId");
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("ModifiedOn");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("RssSettingDescendantElement_Id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RssSettingDescendantElement_Id")
+                        .IsUnique()
+                        .HasFilter("[RssSettingDescendantElement_Id] IS NOT NULL");
+
+                    b.ToTable("DescendingElements");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2019, 5, 9, 15, 20, 40, 621, DateTimeKind.Local).AddTicks(9398),
+                            IsDeleted = false,
+                            ModifiedOn = new DateTime(2019, 5, 9, 15, 20, 40, 622, DateTimeKind.Local).AddTicks(842),
+                            Name = "item",
+                            RssSettingDescendantElement_Id = 1
+                        });
+                });
+
+            modelBuilder.Entity("RRF.EFModels.ImageElement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreatedOn");
+
+                    b.Property<DateTime?>("DeletedOn");
+
+                    b.Property<string>("ElementSubName");
 
                     b.Property<bool>("IsDeleted");
 
                     b.Property<DateTime?>("ModifiedOn");
 
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("RssSettingImageFormatElement_Id");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ImageRssSettingId")
-                        .IsUnique();
+                    b.HasIndex("RssSettingImageFormatElement_Id");
 
-                    b.ToTable("ImageFormats");
+                    b.ToTable("ImageElements");
                 });
 
-            modelBuilder.Entity("RRF.EFModels.ItemModel", b =>
+            modelBuilder.Entity("RRF.EFModels.ModelElement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -151,51 +209,37 @@ namespace RRF.RRFDbContext.Migrations
 
                     b.Property<bool>("IsDeleted");
 
-                    b.Property<int>("ItemRssSettingId");
-
                     b.Property<string>("LinkToCurrentElement");
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<DateTime>("PubDate");
+                    b.Property<string>("PubDate");
+
+                    b.Property<int>("RssSettingDisplayModelElementId");
 
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ItemRssSettingId")
+                    b.HasIndex("RssSettingDisplayModelElementId")
                         .IsUnique();
 
-                    b.ToTable("ItemModels");
-                });
-
-            modelBuilder.Entity("RRF.EFModels.ModelElement", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BuildName");
-
-                    b.Property<DateTime?>("CreatedOn");
-
-                    b.Property<DateTime?>("DeletedOn");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<bool>("IsProcessed");
-
-                    b.Property<int>("ModelRssSettingsId");
-
-                    b.Property<DateTime?>("ModifiedOn");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ModelRssSettingsId");
-
                     b.ToTable("ModelElements");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2019, 5, 9, 15, 20, 40, 622, DateTimeKind.Local).AddTicks(5891),
+                            Description = "description",
+                            ImageSRC = "image",
+                            IsDeleted = false,
+                            LinkToCurrentElement = "link",
+                            ModifiedOn = new DateTime(2019, 5, 9, 15, 20, 40, 622, DateTimeKind.Local).AddTicks(7308),
+                            PubDate = "pubDate",
+                            RssSettingDisplayModelElementId = 1,
+                            Title = "title"
+                        });
                 });
 
             modelBuilder.Entity("RRF.EFModels.RssChannel", b =>
@@ -218,20 +262,31 @@ namespace RRF.RRFDbContext.Migrations
 
                     b.Property<string>("URL");
 
-                    b.Property<Guid>("UserId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
 
                     b.ToTable("RssChannels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClientId = "baa0d4c2-1589-4378-be1c-238612953ae1",
+                            CreatedOn = new DateTime(2019, 5, 9, 15, 20, 40, 620, DateTimeKind.Local).AddTicks(9141),
+                            IsDeleted = false,
+                            Name = "testRssChannel",
+                            URL = "https://www.vesti.bg/rss.php"
+                        });
                 });
 
-            modelBuilder.Entity("RRF.EFModels.RssSettings", b =>
+            modelBuilder.Entity("RRF.EFModels.RssSetting", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClientId");
 
                     b.Property<DateTime?>("CreatedOn");
 
@@ -241,15 +296,25 @@ namespace RRF.RRFDbContext.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<int>("RssChannelId");
-
-                    b.Property<Guid>("UserId");
+                    b.Property<int?>("RssChanel_Id");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RssChannelId");
+                    b.HasIndex("RssChanel_Id")
+                        .IsUnique()
+                        .HasFilter("[RssChanel_Id] IS NOT NULL");
 
                     b.ToTable("RssSettings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClientId = "baa0d4c2-1589-4378-be1c-238612953ae1",
+                            CreatedOn = new DateTime(2019, 5, 9, 15, 20, 40, 621, DateTimeKind.Local).AddTicks(4235),
+                            IsDeleted = false,
+                            RssChanel_Id = 1
+                        });
                 });
 
             modelBuilder.Entity("RRF.EFModels.XElementModel", b =>
@@ -262,48 +327,61 @@ namespace RRF.RRFDbContext.Migrations
 
                     b.Property<DateTime?>("DeletedOn");
 
-                    b.Property<int>("ImageFormatId");
-
                     b.Property<bool>("IsDeleted");
 
                     b.Property<DateTime?>("ModifiedOn");
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("RssElementsSettingId");
+                    b.Property<int?>("RssSettingFormatElements_Id");
+
+                    b.Property<string>("UseName");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ImageFormatId");
-
-                    b.HasIndex("RssElementsSettingId")
-                        .IsUnique();
+                    b.HasIndex("RssSettingFormatElements_Id");
 
                     b.ToTable("XElementsModels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDeleted = false,
+                            Name = "<p>",
+                            RssSettingFormatElements_Id = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDeleted = false,
+                            Name = "</p>",
+                            RssSettingFormatElements_Id = 1
+                        });
                 });
 
-            modelBuilder.Entity("RRF.EFModels.ImageFormat", b =>
+            modelBuilder.Entity("RRF.EFModels.DescendingElement", b =>
                 {
-                    b.HasOne("RRF.EFModels.RssSettings", "ImageRssSetting")
-                        .WithOne("ImageFormats")
-                        .HasForeignKey("RRF.EFModels.ImageFormat", "ImageRssSettingId")
+                    b.HasOne("RRF.EFModels.RssSetting", "RssSettingDescendantElement")
+                        .WithOne("DescendantElement")
+                        .HasForeignKey("RRF.EFModels.DescendingElement", "RssSettingDescendantElement_Id")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("RRF.EFModels.ItemModel", b =>
+            modelBuilder.Entity("RRF.EFModels.ImageElement", b =>
                 {
-                    b.HasOne("RRF.EFModels.RssSettings", "ItemRssSetting")
-                        .WithOne("ItemModel")
-                        .HasForeignKey("RRF.EFModels.ItemModel", "ItemRssSettingId")
+                    b.HasOne("RRF.EFModels.RssSetting", "RssSettingImageFormatElement")
+                        .WithMany("RssImageFormatElements")
+                        .HasForeignKey("RssSettingImageFormatElement_Id")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("RRF.EFModels.ModelElement", b =>
                 {
-                    b.HasOne("RRF.EFModels.RssSettings", "RssSetting")
-                        .WithMany("ModelElements")
-                        .HasForeignKey("ModelRssSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("RRF.EFModels.RssSetting", "RssSettingDisplayModelElement")
+                        .WithOne("RssModelElements")
+                        .HasForeignKey("RRF.EFModels.ModelElement", "RssSettingDisplayModelElementId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("RRF.EFModels.RssChannel", b =>
@@ -314,24 +392,19 @@ namespace RRF.RRFDbContext.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("RRF.EFModels.RssSettings", b =>
+            modelBuilder.Entity("RRF.EFModels.RssSetting", b =>
                 {
                     b.HasOne("RRF.EFModels.RssChannel", "RssChannel")
-                        .WithMany("Settings")
-                        .HasForeignKey("RssChannelId")
+                        .WithOne("RssSeting")
+                        .HasForeignKey("RRF.EFModels.RssSetting", "RssChanel_Id")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("RRF.EFModels.XElementModel", b =>
                 {
-                    b.HasOne("RRF.EFModels.ImageFormat", "ImageFormat")
-                        .WithMany("ImageSearchTag")
-                        .HasForeignKey("ImageFormatId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("RRF.EFModels.RssSettings", "RssElementsSetting")
-                        .WithOne("MainElement")
-                        .HasForeignKey("RRF.EFModels.XElementModel", "RssElementsSettingId")
+                    b.HasOne("RRF.EFModels.RssSetting", "RssSettingFormatElements")
+                        .WithMany("RssFormatElements")
+                        .HasForeignKey("RssSettingFormatElements_Id")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

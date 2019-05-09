@@ -7,6 +7,6 @@ namespace RRF.ModelFactory.FormateElementsRepository.Abstract
     public interface IFormateElementsRepository
     {
         IList<string> GetFormatElements();
-        Task<IList<string>> GetFormatElementsAsync();
+        Task<IList<string>> GetFormatElementsAsync(string userId);
     }
 }

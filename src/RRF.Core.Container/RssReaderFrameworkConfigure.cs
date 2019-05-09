@@ -36,6 +36,19 @@ using RRF.Identity.AccountManager.Abstract;
 using RRF.Identity.AccountManager;
 using System;
 using Microsoft.AspNetCore.Identity;
+using RRF.BaseModelAccess;
+using RRF.BaseModelAccess.Abstract;
+using RRF.EFService.ItemModelService;
+using RRF.EFService.ItemModelService.Abstract;
+using RRF.EFService.RssChanelService.Abstract;
+using RRF.EFService.RssChanelService;
+using RRF.EFRepository.Abstract;
+using RRF.EFModels;
+using RRF.EFRepository;
+using RRF.EFService.FormatElementsService.Abstract;
+using RRF.EFService.FormatElementService;
+using RRF.EFService.RssSettingsService.Abstrtact;
+using RRF.EFService.RssSettingsService;
 
 namespace RRF.Core.Container
 {
@@ -72,7 +85,7 @@ namespace RRF.Core.Container
             service.AddScoped<IFeedModelFactory<IBaseModel>, FeedModelFactory.FeedModelFactory>();
             //Format
             //FormatElement Repository
-            //service.AddScoped<IFormateElementsRepository, FormatElementsRepository>();
+            service.AddScoped<IFormateElementsRepository, ModelFactory.FormatElementsRepository.FormatElementsRepository>();
             //Models
             //BaseModel
             service.AddScoped<IBaseModelFormat<IBaseModel>, BaseModelFormat>();
@@ -90,12 +103,24 @@ namespace RRF.Core.Container
             service.AddScoped<IBaseModelRepository, BaseModelRepository.BaseModelRepository>();
             //Wrappers
             service.AddScoped<IDateTimePars, DateTimeWrapper.DateTimeWrapper>();
-            service.AddScoped<IWebClientWrapper, WebClintWrapper.WebClientWrapper>();
+            service.AddScoped<IWebClientWrapper, WebClintWrapper.WebClientWrapper>(x => new WebClintWrapper.WebClientWrapper(new System.Net.WebClient()));
             service.AddScoped<IXDocumentWrapper, XDocumentWrapper.XDocumentWrapper>();
             //Identity
             service.AddScoped<IUserManagerUtility<BaseIdentityModel>, UserManagerUtility>();
             service.AddScoped<ISignInManagerUtility<BaseIdentityModel>, SignInManagerUtility>();
             service.AddScoped<IAccountManager<BaseIdentityModel>, AccountManager>();
+            //Acces Points
+            service.AddScoped<IBaseModelAccess, BaseModelAccess.BaseModelAccess>();
+            // EF SERVICESS
+            service.AddScoped<IItemModelService, ItemModelService>();
+            service.AddScoped<IRssChanelService, RssChanelService>();
+            service.AddScoped<IFormatElementsService, FormatElementService>();
+            service.AddScoped<IRssSettingsService, RssSettingsService>();
+            //EF REPOSITORIES          
+            service.AddScoped<IEFRepository<RssChannel>, RssChanelRepository>();
+            service.AddScoped<IEFRepository<RssSetting>, RssSettingsRepository>();
+            service.AddScoped<IEFRepository<ModelElement>, ModelElementRepository>();
+            service.AddScoped<IEFRepository<XElementModel>, EFRepository.FormatElementsRepository>();
 
         }
     }

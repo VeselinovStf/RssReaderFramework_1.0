@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using RRF.Core.Container;
+
 using RRF.InvokeMiddleware;
 
 namespace RRF.API
@@ -30,6 +31,7 @@ namespace RRF.API
             RssReaderFrameworkConfigure
                 .GoRssReaderFrameworkToWork(services, Configuration.GetConnectionString("DevelopmentConnectionString"));
 
+          
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -50,6 +52,9 @@ namespace RRF.API
 
             app.UseRssReaderFramework();
             app.UseAuthentication();
+
+            
+
             app.UseMvc();
         }
     }

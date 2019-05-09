@@ -3,6 +3,7 @@ using RFF.ModelFactory.XElementInterpretator.Abstract;
 using RRF.FeedModel.Abstract;
 using RRF.FeedModelFactory.Abstract;
 using RRF.FeedModelFactoryValidator.Abstract;
+using RRF.GuarValidator.CustomExceptions;
 using RRF.ModelFactory.BaseModelFormat.Abstract;
 using RRF.Models.BaseModel.Abstract;
 using System;
@@ -37,9 +38,7 @@ namespace RRF.FeedModelFactory
             foreach (var e in elements)
             {
                 try
-                {
-               
-
+                {              
                     var modelFromXElement = await this.xElementToModel.XElementToModel(e, userId);
 
                     RSSFeedData.Add(
@@ -51,6 +50,8 @@ namespace RRF.FeedModelFactory
                 catch (Exception ex)
                 {
                     this.logger.LogWarning(ex.Message);
+
+                    throw new ArgumentException(ex.Message);
                 }
             }
 

@@ -24,10 +24,12 @@ namespace RRF.EFService.RssChanelService
         {
             Validator.StringIsNullOrEmpty(userId);
 
-            var call = await this.rssChannelRepository.GetSetAsync();
+            var call = await this.rssChannelRepository.GetSetAsync(userId);
+
+            Validator.RssCannelObjectIsNull(call);
 
             return call
-                .Where(c => c.UserId.ToString() == userId);
+                .Where(c => c.ClientId.ToString() == userId);
         }
     }
 }
