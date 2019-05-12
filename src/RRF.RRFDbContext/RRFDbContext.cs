@@ -24,6 +24,11 @@ namespace RRF.RRFDbContext
         public DbSet<ImageElement> ImageElements { get; set; }
         public DbSet<DescendingElement> DescendingElements { get; set; }
 
+        public DbSet<IdentityUserClaim<string>> IdentityUserClaim { get; set; }
+        public DbSet<IdentityUserRole<string>> IdentityUserRole { get; set; }
+
+        public DbSet<IdentityRoleClaim<string>> IdentityRoleChain { get; set; }
+
         public RRFDbContext()
         {
         }
@@ -35,7 +40,7 @@ namespace RRF.RRFDbContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-           builder.Entity<IdentityRole>().HasData(this.SeedDefaultRoles());
+            builder.Entity<IdentityRole>().HasData(this.SeedDefaultRoles());
 
             builder.Entity<Client>().HasData(EFSeed.EFSeed.SeedDefaultClient());
             builder.Entity<RssChannel>().HasData(EFSeed.EFSeed.SeedRssChannels());
@@ -56,9 +61,11 @@ namespace RRF.RRFDbContext
         private void ApplyModelConfigurations(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new ClientConfig());
-            builder.ApplyConfiguration(new RssSettingsConfig());     
+            builder.ApplyConfiguration(new RssSettingsConfig());
             builder.ApplyConfiguration(new RssChanelConfig());
-           
+            builder.ApplyConfiguration(new IdentityUserChainConfig());
+            builder.ApplyConfiguration(new IdentityUserRoleConfig());
+            builder.ApplyConfiguration(new IdentityRoleChaneConfig());
         }
 
         public override int SaveChanges()

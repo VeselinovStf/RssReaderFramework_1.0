@@ -17,7 +17,6 @@ namespace RRF.InvokeMiddleware
         {
             //Do extra job here
 
-
             await this.next(context);
         }
     }

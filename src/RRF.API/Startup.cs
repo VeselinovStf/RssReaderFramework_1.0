@@ -5,13 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using RRF.API.ViewModels.Identity;
+using RRF.ClientControllerValidation;
 using RRF.Core.Container;
-
+using RRF.EFModels;
+using RRF.IdentityControllerValidator.Abstract;
 using RRF.InvokeMiddleware;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -30,7 +35,10 @@ namespace RRF.API
         public void ConfigureServices(IServiceCollection services)
         {
             RssReaderFrameworkConfigure
-                .GoRssReaderFrameworkToWork(services, Configuration.GetConnectionString("DevelopmentConnectionString"));
+                .GoRssReaderFrameworkToWork(
+                services,
+                Configuration.GetConnectionString("DevelopmentConnectionString")
+                );
 
             services.AddSwaggerGen(c =>
             {
@@ -43,7 +51,6 @@ namespace RRF.API
                     Contact = new Contact
                     {
                         Name = "Veselinov Stefan",
-                        
                     },
                     License = new License
                     {
@@ -52,7 +59,15 @@ namespace RRF.API
                     }
                 });
             });
+
+            ConfigureAPIServices(services);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        }
+
+        private void ConfigureAPIServices(IServiceCollection services)
+        {
+            services.AddScoped<IIdentityControllerValidator, ClientControllerValidation.ClientControllerValidation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +95,20 @@ namespace RRF.API
                 c.RoutePrefix = string.Empty;
             });
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+           {
+               routes.MapRoute(
+                   name: "RssControl",
+                   template: "api/Rss/{apiKey}",
+                   defaults: new { controller = "Rss" }
+                   );
+
+               routes.MapRoute(
+                   name: "Register",
+                   template: "api/Client/",
+                   defaults: new { controller = "Client" }
+                   );
+           });
         }
     }
 }

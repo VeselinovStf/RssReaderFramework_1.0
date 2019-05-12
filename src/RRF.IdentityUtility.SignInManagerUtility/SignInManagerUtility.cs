@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using RRF.EFModels;
 using RRF.Identity.Models.BaseModel;
 using RRF.IdentityUtility.SignInManagerUtility.Abstract;
 using System;
@@ -7,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace RRF.IdentityUtility.SignInManagerUtility
 {
-    public class SignInManagerUtility : ISignInManagerUtility<BaseIdentityModel>
+    public class SignInManagerUtility : ISignInManagerUtility<Client>
     {
-        private readonly SignInManager<BaseIdentityModel> _signInManager;
+        private readonly SignInManager<Client> _signInManager;
 
-        public SignInManagerUtility(SignInManager<BaseIdentityModel> signInManager)
+        public SignInManagerUtility(SignInManager<Client> signInManager)
         {
             this._signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
         }
 
-        public async Task SignInAsync(BaseIdentityModel user, bool isPersistent)
+        public async Task SignInAsync(Client user, bool isPersistent)
         {
             await _signInManager.SignInAsync(user, isPersistent: false);
         }
@@ -31,7 +32,7 @@ namespace RRF.IdentityUtility.SignInManagerUtility
             await _signInManager.SignOutAsync();
         }
 
-        public async Task RefreshSignInAsync(BaseIdentityModel user)
+        public async Task RefreshSignInAsync(Client user)
         {
             await this._signInManager.RefreshSignInAsync(user);
         }
@@ -41,7 +42,7 @@ namespace RRF.IdentityUtility.SignInManagerUtility
             return this._signInManager.IsSignedIn(user);
         }
 
-        public async Task<ClaimsPrincipal> CreateUserPrincipalAsync(BaseIdentityModel user)
+        public async Task<ClaimsPrincipal> CreateUserPrincipalAsync(Client user)
         {
             return await this._signInManager.CreateUserPrincipalAsync(user);
         }

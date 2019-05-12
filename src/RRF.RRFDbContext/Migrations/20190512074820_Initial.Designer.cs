@@ -10,8 +10,8 @@ using RRF.RRFDbContext;
 namespace RRF.RRFDbContext.Migrations
 {
     [DbContext(typeof(RRFDbContext))]
-    [Migration("20190509122042_Basic Seed")]
-    partial class BasicSeed
+    [Migration("20190512074820_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,17 +40,45 @@ namespace RRF.RRFDbContext.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "8a139774-c379-47e1-8341-18aed8775fd2",
+                            ConcurrencyStamp = "36de089f-57ae-4834-ae84-1c179af5dff7",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "a1a25ac6-9d71-411a-9daf-d139fe85efe0",
+                            ConcurrencyStamp = "7c664dd4-bb2e-40fb-aaa9-6c5b109ef0e7",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("Id");
+
+                    b.Property<string>("ClaimType");
+
+                    b.Property<string>("ClaimValue");
+
+                    b.HasKey("UserId", "Id");
+
+                    b.ToTable("IdentityUserClaim");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("RoleId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("RoleId", "UserId");
+
+                    b.HasAlternateKey("UserId", "RoleId");
+
+                    b.ToTable("IdentityUserRole");
                 });
 
             modelBuilder.Entity("RRF.EFModels.Client", b =>
@@ -98,7 +126,7 @@ namespace RRF.RRFDbContext.Migrations
                             Id = "baa0d4c2-1589-4378-be1c-238612953ae1",
                             APIKey = new Guid("00000000-0000-0000-0000-000000000000"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2f5293c2-730f-43d5-b19b-858140548fb3",
+                            ConcurrencyStamp = "08c1fed7-67b3-4985-b01c-f3b2f45efb00",
                             Email = "client@mail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
@@ -106,25 +134,25 @@ namespace RRF.RRFDbContext.Migrations
                             NormalizedUserName = "CLIENT@MAIL.COM",
                             PhoneNumber = "+359359",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "470080ec-4d5d-4fa2-abe0-32981be9d610",
+                            SecurityStamp = "a0ab8c8f-965e-43d8-bf84-4950d01773f4",
                             TwoFactorEnabled = false,
                             UserName = "Client"
                         },
                         new
                         {
-                            Id = "f2916468-bfc0-4746-a227-58acc9c943d2",
+                            Id = "2ef977b2-1343-497d-87e6-8f2062dbeaf8",
                             APIKey = new Guid("00000000-0000-0000-0000-000000000000"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "73153bae-0ef6-4762-bd18-45089d4767ea",
+                            ConcurrencyStamp = "a4cba234-89ed-4ec5-aebb-771fb1631d15",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH4nuNBhB3FtyQJyBPm8A7gYm0whJq4siaRv2cAxme+2qyp7utQN3pm9dlD0ijW/KA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAqgqzUh49o7Livac4VQQHBO8cm76xhjt0w/Qcen86+y8TcILsfPTDnn/YoGXa6/qA==",
                             PhoneNumber = "+359359",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "1ac81dcb-2e60-4ae2-ab89-7252ac05854a",
+                            SecurityStamp = "cb1e401b-c2d8-4fcc-b978-d60b09a612fc",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -160,9 +188,9 @@ namespace RRF.RRFDbContext.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2019, 5, 9, 15, 20, 40, 621, DateTimeKind.Local).AddTicks(9398),
+                            CreatedOn = new DateTime(2019, 5, 12, 10, 48, 17, 949, DateTimeKind.Local).AddTicks(2886),
                             IsDeleted = false,
-                            ModifiedOn = new DateTime(2019, 5, 9, 15, 20, 40, 622, DateTimeKind.Local).AddTicks(842),
+                            ModifiedOn = new DateTime(2019, 5, 12, 10, 48, 17, 949, DateTimeKind.Local).AddTicks(4326),
                             Name = "item",
                             RssSettingDescendantElement_Id = 1
                         });
@@ -232,12 +260,12 @@ namespace RRF.RRFDbContext.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2019, 5, 9, 15, 20, 40, 622, DateTimeKind.Local).AddTicks(5891),
+                            CreatedOn = new DateTime(2019, 5, 12, 10, 48, 17, 949, DateTimeKind.Local).AddTicks(9444),
                             Description = "description",
                             ImageSRC = "image",
                             IsDeleted = false,
                             LinkToCurrentElement = "link",
-                            ModifiedOn = new DateTime(2019, 5, 9, 15, 20, 40, 622, DateTimeKind.Local).AddTicks(7308),
+                            ModifiedOn = new DateTime(2019, 5, 12, 10, 48, 17, 950, DateTimeKind.Local).AddTicks(847),
                             PubDate = "pubDate",
                             RssSettingDisplayModelElementId = 1,
                             Title = "title"
@@ -275,7 +303,7 @@ namespace RRF.RRFDbContext.Migrations
                         {
                             Id = 1,
                             ClientId = "baa0d4c2-1589-4378-be1c-238612953ae1",
-                            CreatedOn = new DateTime(2019, 5, 9, 15, 20, 40, 620, DateTimeKind.Local).AddTicks(9141),
+                            CreatedOn = new DateTime(2019, 5, 12, 10, 48, 17, 948, DateTimeKind.Local).AddTicks(2673),
                             IsDeleted = false,
                             Name = "testRssChannel",
                             URL = "https://www.vesti.bg/rss.php"
@@ -313,7 +341,7 @@ namespace RRF.RRFDbContext.Migrations
                         {
                             Id = 1,
                             ClientId = "baa0d4c2-1589-4378-be1c-238612953ae1",
-                            CreatedOn = new DateTime(2019, 5, 9, 15, 20, 40, 621, DateTimeKind.Local).AddTicks(4235),
+                            CreatedOn = new DateTime(2019, 5, 12, 10, 48, 17, 948, DateTimeKind.Local).AddTicks(7710),
                             IsDeleted = false,
                             RssChanel_Id = 1
                         });
@@ -390,8 +418,7 @@ namespace RRF.RRFDbContext.Migrations
                 {
                     b.HasOne("RRF.EFModels.Client", "Client")
                         .WithMany("Channels")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("ClientId");
                 });
 
             modelBuilder.Entity("RRF.EFModels.RssSetting", b =>

@@ -3,149 +3,147 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RRF.RRFDbContext.Migrations
 {
-    public partial class Modelchangeandseedagain : Migration
+    public partial class Initialroleconfig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "Clients",
                 keyColumn: "Id",
-                keyValue: "f05a7130-28fe-4a4f-9688-706ef78ad6ab");
+                keyValue: "2ef977b2-1343-497d-87e6-8f2062dbeaf8");
+
+            migrationBuilder.CreateTable(
+                name: "IdentityRoleChain",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    RoleId = table.Column<string>(nullable: false),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityRoleChain", x => new { x.Id, x.RoleId });
+                });
 
             migrationBuilder.UpdateData(
                 table: "Clients",
                 keyColumn: "Id",
                 keyValue: "baa0d4c2-1589-4378-be1c-238612953ae1",
                 columns: new[] { "ConcurrencyStamp", "SecurityStamp" },
-                values: new object[] { "3f235063-8eed-407d-8725-1fb27435286b", "4fd32f88-a531-4db1-a4d2-46a40d7e8c52" });
+                values: new object[] { "7b5f5cde-8785-45a0-aab0-fa67b7f33096", "66fba0e5-0967-406c-9fed-d86483cff10a" });
 
             migrationBuilder.InsertData(
                 table: "Clients",
                 columns: new[] { "Id", "APIKey", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "4bd970d2-acec-4b89-a28f-1fce4470d0cc", new Guid("00000000-0000-0000-0000-000000000000"), 0, "ebba9600-40a5-4aab-ae52-d2ea3d599f61", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEKnfOToMUyhvaH5tiqH6w1GuuvuqFthYUJb38f1UM41pk8XlYH9Efm2s62mzJD9W5g==", "+359359", true, "b8ae5176-4c72-446f-a52a-49da1af1acf2", false, "Admin" });
+                values: new object[] { "e3a958db-ec09-4afd-87c1-1197fec81617", new Guid("00000000-0000-0000-0000-000000000000"), 0, "1814e1b2-9321-4476-92f2-54a86f296128", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEFleHp6vKM9aWJhpAoH84r0l20KCvOYw7G5csKXrK6wWoFF3ikR6lne9XukxUkF+2g==", "+359359", true, "8b96073c-378f-4c68-8d40-4e0abd74df18", false, "Admin" });
 
             migrationBuilder.UpdateData(
                 table: "DescendingElements",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CreatedOn", "ModifiedOn" },
-                values: new object[] { new DateTime(2019, 5, 9, 14, 51, 34, 402, DateTimeKind.Local).AddTicks(3211), new DateTime(2019, 5, 9, 14, 51, 34, 402, DateTimeKind.Local).AddTicks(4638) });
+                values: new object[] { new DateTime(2019, 5, 12, 11, 1, 28, 119, DateTimeKind.Local).AddTicks(1693), new DateTime(2019, 5, 12, 11, 1, 28, 119, DateTimeKind.Local).AddTicks(3178) });
 
             migrationBuilder.UpdateData(
                 table: "IdentityRole",
                 keyColumn: "Id",
                 keyValue: "1",
                 column: "ConcurrencyStamp",
-                value: "d5595627-e7bf-43c7-9fb2-cf2a7f0f34a6");
+                value: "5ef2fca0-238d-4f9a-bcb6-d8657264e785");
 
             migrationBuilder.UpdateData(
                 table: "IdentityRole",
                 keyColumn: "Id",
                 keyValue: "2",
                 column: "ConcurrencyStamp",
-                value: "f4470ff3-cb5b-458d-9c7f-54938eafc866");
+                value: "1ddcd1c9-feeb-406e-8bf7-25a0f9e436f3");
 
             migrationBuilder.UpdateData(
                 table: "ModelElements",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CreatedOn", "ModifiedOn" },
-                values: new object[] { new DateTime(2019, 5, 9, 14, 51, 34, 402, DateTimeKind.Local).AddTicks(9623), new DateTime(2019, 5, 9, 14, 51, 34, 403, DateTimeKind.Local).AddTicks(1111) });
+                values: new object[] { new DateTime(2019, 5, 12, 11, 1, 28, 120, DateTimeKind.Local).AddTicks(8666), new DateTime(2019, 5, 12, 11, 1, 28, 121, DateTimeKind.Local).AddTicks(268) });
 
             migrationBuilder.UpdateData(
                 table: "RssChannels",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedOn",
-                value: new DateTime(2019, 5, 9, 14, 51, 34, 401, DateTimeKind.Local).AddTicks(3160));
+                value: new DateTime(2019, 5, 12, 11, 1, 28, 85, DateTimeKind.Local).AddTicks(8780));
 
             migrationBuilder.UpdateData(
                 table: "RssSettings",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedOn",
-                value: new DateTime(2019, 5, 9, 14, 51, 34, 401, DateTimeKind.Local).AddTicks(8035));
-
-            migrationBuilder.InsertData(
-                table: "XElementsModels",
-                columns: new[] { "Id", "CreatedOn", "DeletedOn", "IsDeleted", "ModifiedOn", "Name", "RssSettingFormatElements_Id", "UseName" },
-                values: new object[,]
-                {
-                    { 1, null, null, false, null, "<description>", 1, null },
-                    { 2, null, null, false, null, "<title>", 1, null }
-                });
+                value: new DateTime(2019, 5, 12, 11, 1, 28, 118, DateTimeKind.Local).AddTicks(6072));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "IdentityRoleChain");
+
             migrationBuilder.DeleteData(
                 table: "Clients",
                 keyColumn: "Id",
-                keyValue: "4bd970d2-acec-4b89-a28f-1fce4470d0cc");
-
-            migrationBuilder.DeleteData(
-                table: "XElementsModels",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "XElementsModels",
-                keyColumn: "Id",
-                keyValue: 2);
+                keyValue: "e3a958db-ec09-4afd-87c1-1197fec81617");
 
             migrationBuilder.UpdateData(
                 table: "Clients",
                 keyColumn: "Id",
                 keyValue: "baa0d4c2-1589-4378-be1c-238612953ae1",
                 columns: new[] { "ConcurrencyStamp", "SecurityStamp" },
-                values: new object[] { "eac5fb6e-00c3-4d9b-ac88-201b20cb1d03", "da48c608-d990-454a-8002-1c02db830e92" });
+                values: new object[] { "08c1fed7-67b3-4985-b01c-f3b2f45efb00", "a0ab8c8f-965e-43d8-bf84-4950d01773f4" });
 
             migrationBuilder.InsertData(
                 table: "Clients",
                 columns: new[] { "Id", "APIKey", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "f05a7130-28fe-4a4f-9688-706ef78ad6ab", new Guid("00000000-0000-0000-0000-000000000000"), 0, "16cbd487-628d-4c64-b97a-7d8ee544033c", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEP4SH5wXQ9SEvzVTd5FwCONsKj9WYXbfuxzMBeBK5XOEaG10YrZLvsroK5X+SzT7Yw==", "+359359", true, "cf7f4807-c63b-4226-b391-7b489cf9427f", false, "Admin" });
+                values: new object[] { "2ef977b2-1343-497d-87e6-8f2062dbeaf8", new Guid("00000000-0000-0000-0000-000000000000"), 0, "a4cba234-89ed-4ec5-aebb-771fb1631d15", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEAqgqzUh49o7Livac4VQQHBO8cm76xhjt0w/Qcen86+y8TcILsfPTDnn/YoGXa6/qA==", "+359359", true, "cb1e401b-c2d8-4fcc-b978-d60b09a612fc", false, "Admin" });
 
             migrationBuilder.UpdateData(
                 table: "DescendingElements",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CreatedOn", "ModifiedOn" },
-                values: new object[] { new DateTime(2019, 5, 9, 14, 43, 23, 887, DateTimeKind.Local).AddTicks(2731), new DateTime(2019, 5, 9, 14, 43, 23, 887, DateTimeKind.Local).AddTicks(4243) });
+                values: new object[] { new DateTime(2019, 5, 12, 10, 48, 17, 949, DateTimeKind.Local).AddTicks(2886), new DateTime(2019, 5, 12, 10, 48, 17, 949, DateTimeKind.Local).AddTicks(4326) });
 
             migrationBuilder.UpdateData(
                 table: "IdentityRole",
                 keyColumn: "Id",
                 keyValue: "1",
                 column: "ConcurrencyStamp",
-                value: "17418759-3857-4fc7-b552-11e3c42bd4ec");
+                value: "36de089f-57ae-4834-ae84-1c179af5dff7");
 
             migrationBuilder.UpdateData(
                 table: "IdentityRole",
                 keyColumn: "Id",
                 keyValue: "2",
                 column: "ConcurrencyStamp",
-                value: "bd62219a-6b42-42f9-a74e-11c0407ec080");
+                value: "7c664dd4-bb2e-40fb-aaa9-6c5b109ef0e7");
 
             migrationBuilder.UpdateData(
                 table: "ModelElements",
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "CreatedOn", "ModifiedOn" },
-                values: new object[] { new DateTime(2019, 5, 9, 14, 43, 23, 887, DateTimeKind.Local).AddTicks(9539), new DateTime(2019, 5, 9, 14, 43, 23, 888, DateTimeKind.Local).AddTicks(979) });
+                values: new object[] { new DateTime(2019, 5, 12, 10, 48, 17, 949, DateTimeKind.Local).AddTicks(9444), new DateTime(2019, 5, 12, 10, 48, 17, 950, DateTimeKind.Local).AddTicks(847) });
 
             migrationBuilder.UpdateData(
                 table: "RssChannels",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedOn",
-                value: new DateTime(2019, 5, 9, 14, 43, 23, 885, DateTimeKind.Local).AddTicks(7198));
+                value: new DateTime(2019, 5, 12, 10, 48, 17, 948, DateTimeKind.Local).AddTicks(2673));
 
             migrationBuilder.UpdateData(
                 table: "RssSettings",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "CreatedOn",
-                value: new DateTime(2019, 5, 9, 14, 43, 23, 886, DateTimeKind.Local).AddTicks(2241));
+                value: new DateTime(2019, 5, 12, 10, 48, 17, 948, DateTimeKind.Local).AddTicks(7710));
         }
     }
 }

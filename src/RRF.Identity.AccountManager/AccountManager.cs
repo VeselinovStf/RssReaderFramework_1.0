@@ -12,20 +12,20 @@ using System.Threading.Tasks;
 
 namespace RRF.Identity.AccountManager
 {
-    public class AccountManager : IAccountManager<BaseIdentityModel>
+    public class AccountManager : IAccountManager<Client>
     {
-        private readonly IUserManagerUtility<BaseIdentityModel> userManagerUtility;
-        private readonly ISignInManagerUtility<BaseIdentityModel> signInManagerUtility;
+        private readonly IUserManagerUtility<Client> userManagerUtility;
+        private readonly ISignInManagerUtility<Client> signInManagerUtility;
 
         public AccountManager(
-            IUserManagerUtility<BaseIdentityModel> userManagerUtility,
-            ISignInManagerUtility<BaseIdentityModel> signInManagerUtility)
+            IUserManagerUtility<Client> userManagerUtility,
+            ISignInManagerUtility<Client> signInManagerUtility)
         {
             this.userManagerUtility = userManagerUtility;
             this.signInManagerUtility = signInManagerUtility;
         }
 
-        public async Task<bool> AddToRoleAsync(BaseIdentityModel user, string role)
+        public async Task<bool> AddToRoleAsync(Client user, string role)
         {
             try
             {
@@ -60,13 +60,13 @@ namespace RRF.Identity.AccountManager
         /// <param name="userName">User UserName from Form</param>
         /// <param name="password">User Password from form</param>
         /// <returns></returns>
-        public async Task<BaseIdentityModel> Register(string email, string userName, string password)
+        public async Task<Client> Register(string email, string userName, string password)
         {
             Validator.StringIsNullOrEmpty(email);
             Validator.StringIsNullOrEmpty(userName);
             Validator.StringIsNullOrEmpty(password);
 
-            var user = new Client { UserName = userName, Email = email , APIKey = Guid.NewGuid()};
+            var user = new Client { UserName = userName, Email = email, APIKey = Guid.NewGuid() };
 
             try
             {
@@ -77,7 +77,7 @@ namespace RRF.Identity.AccountManager
                     return user;
                 }
 
-                throw new ArgumentException("Account creation fails");
+                throw new ArgumentException($"Account creation fails : {result.Errors}");
             }
             catch (Exception ex)
             {
@@ -85,7 +85,7 @@ namespace RRF.Identity.AccountManager
             }
         }
 
-        public async Task<bool> SignInAsync(BaseIdentityModel user, bool isPersistent = false)
+        public async Task<bool> SignInAsync(Client user, bool isPersistent = false)
         {
             try
             {

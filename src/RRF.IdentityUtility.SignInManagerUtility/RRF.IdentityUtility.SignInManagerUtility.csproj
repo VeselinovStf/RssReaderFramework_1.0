@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RRF.EFModels\RRF.EFModels.csproj" />
     <ProjectReference Include="..\RRF.Identity.Models.BaseModel\RRF.Identity.Models.BaseModel.csproj" />
     <ProjectReference Include="..\RRF.IdentityUtility.SignInManagerUtility.Abstract\RRF.IdentityUtility.SignInManagerUtility.Abstract.csproj" />
   </ItemGroup>

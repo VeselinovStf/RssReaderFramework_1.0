@@ -49,6 +49,7 @@ using RRF.EFService.FormatElementsService.Abstract;
 using RRF.EFService.FormatElementService;
 using RRF.EFService.RssSettingsService.Abstrtact;
 using RRF.EFService.RssSettingsService;
+using RRF.EFModels.Abstract;
 
 namespace RRF.Core.Container
 {
@@ -63,7 +64,7 @@ namespace RRF.Core.Container
 
         private static void RunRssReaderFrameworkIdentity(IServiceCollection service)
         {
-            service.AddIdentity<BaseIdentityModel, IdentityRole>()
+            service.AddIdentity<Client, IdentityRole>()
                .AddEntityFrameworkStores<RRFDbContext.RRFDbContext>()
                .AddDefaultTokenProviders();
         }
@@ -107,8 +108,8 @@ namespace RRF.Core.Container
             service.AddScoped<IXDocumentWrapper, XDocumentWrapper.XDocumentWrapper>();
             //Identity
             service.AddScoped<IUserManagerUtility<Client>, UserManagerUtility>();
-            service.AddScoped<ISignInManagerUtility<BaseIdentityModel>, SignInManagerUtility>();
-            service.AddScoped<IAccountManager<BaseIdentityModel>, AccountManager>();
+            service.AddScoped<ISignInManagerUtility<Client>, SignInManagerUtility>();
+            service.AddScoped<IAccountManager<Client>, AccountManager>();
             //Acces Points
             service.AddScoped<IBaseModelAccess, BaseModelAccess.BaseModelAccess>();
             // EF SERVICESS
@@ -116,12 +117,11 @@ namespace RRF.Core.Container
             service.AddScoped<IRssChanelService, RssChanelService>();
             service.AddScoped<IFormatElementsService, FormatElementService>();
             service.AddScoped<IRssSettingsService, RssSettingsService>();
-            //EF REPOSITORIES          
+            //EF REPOSITORIES
             service.AddScoped<IEFRepository<RssChannel>, RssChanelRepository>();
             service.AddScoped<IEFRepository<RssSetting>, RssSettingsRepository>();
             service.AddScoped<IEFRepository<ModelElement>, ModelElementRepository>();
             service.AddScoped<IEFRepository<XElementModel>, EFRepository.FormatElementsRepository>();
-
         }
     }
 }

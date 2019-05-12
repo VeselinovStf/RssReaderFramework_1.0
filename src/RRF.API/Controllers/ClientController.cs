@@ -5,6 +5,7 @@ using RRF.API.ViewModels.Identity;
 using RRF.EFModels;
 using RRF.Identity.AccountManager.Abstract;
 using RRF.Identity.Models.BaseModel;
+using RRF.IdentityControllerValidator.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,49 +17,45 @@ namespace RRF.API.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        private readonly IAccountManager<Client> accountManager;
         private readonly ILogger<ClientController> logger;
+        private readonly IIdentityControllerValidator registerValidation;
 
         public ClientController(
-            IAccountManager<Client> accountManager,
-            ILogger<ClientController> logger)
+
+            ILogger<ClientController> logger,
+            IIdentityControllerValidator registerValidation)
         {
-            this.accountManager = accountManager;
             this.logger = logger;
+            this.registerValidation = registerValidation;
         }
 
         [AllowAnonymous]
         [HttpPost]
-        [ValidateAntiForgeryToken]      
         public async Task<IActionResult> Register([FromBody]RegisterViewModel model, string returnUrl = null)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var user = await this.accountManager.Register(model.Email, model.Email, model.Password);
-
-                    await this.accountManager.AddToRoleAsync(user, "Client");
-
-                    this.logger.LogInformation("User created a new account with password.");
-
-                    var signUser = await this.accountManager.SignInAsync(user, isPersistent: false);
-
-                    return Ok(user);
+                    if (await this.registerValidation.RegisterClientValidation(model.Email, model.Email, model.Password))
+                    {
+                        return Ok("User is created");
+                    }
+                    else
+                    {
+                        return BadRequest("Can't register user");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    this.logger.LogInformation("Register model is not valid!");
+                    this.logger.LogError(ex.Message);
 
-                    return BadRequest(ex.Message);
+                    return BadRequest("Can't register user");
                 }
             }
-            else
-            {
-                this.logger.LogInformation("Register model is not valid!");
 
-                return BadRequest(model);
-            }
+            // If we got this far, something failed, redisplay form
+            return BadRequest("Invalid model parameters!");
         }
     }
 }

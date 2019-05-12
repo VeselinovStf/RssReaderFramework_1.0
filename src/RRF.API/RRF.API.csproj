@@ -15,7 +15,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RRF.BaseModelAccess.Abstract\RRF.BaseModelAccess.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.ClientControllerValidation\RRF.ClientControllerValidation.csproj" />
     <ProjectReference Include="..\RRF.Core.Container\RRF.Core.Container.csproj" />
+    <ProjectReference Include="..\RRF.IdentityControllerValidator.Abstract\RRF.IdentityControllerValidator.Abstract.csproj" />
     <ProjectReference Include="..\RRF.InvokeMiddleware\RRF.InvokeMiddleware.csproj" />
     <ProjectReference Include="..\RRF.Web\RRF.Web.csproj" />
   </ItemGroup>

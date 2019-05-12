@@ -23,7 +23,7 @@ namespace RRF.API.Controllers
 
         // GET api/values/{userId}       
         [HttpGet]      
-        [Route("{apiKey}")]
+      
         public async Task<ActionResult> Get(string apiKey)
         {
             try
