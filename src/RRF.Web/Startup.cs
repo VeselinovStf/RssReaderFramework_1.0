@@ -9,6 +9,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RRF.HttpClientFactoryWrapper.Abstract;
+using RRF.WebService.AccountControllerService;
+using RRF.WebService.AccountControllerService.Abstract;
+using RRF.WebService.HttpClientService;
+using RRF.WebService.HttpClientService.Abstract;
 
 namespace RRF.Web
 {
@@ -24,6 +29,7 @@ namespace RRF.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -31,6 +37,10 @@ namespace RRF.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddScoped<IHttpClientFactoryWrapper, HttpClientFactoryWrapper.HttpClientFactoryWrapper>();
+
+            services.AddScoped<IAccountControllerService, AccountControllerService>();
+            services.AddScoped<IHttpClientService, HttpClientService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

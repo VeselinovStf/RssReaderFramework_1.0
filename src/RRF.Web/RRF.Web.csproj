@@ -16,4 +16,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.HttpClientFactoryWrapper\RRF.HttpClientFactoryWrapper.csproj" />
+    <ProjectReference Include="..\RRF.WebService.AccountControllerService.Abstract\RRF.WebService.AccountControllerService.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.WebService.AccountControllerService\RRF.WebService.AccountControllerService.csproj" />
+    <ProjectReference Include="..\RRF.WebService.HttpClientService\RRF.WebService.HttpClientService.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using RRF.Web.ViewModels.Identity;
+using RRF.Web.ViewModels.ModelFactory;
+using RRF.WebService.AccountControllerService.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -13,29 +17,22 @@ namespace RentSystem.Web.Controllers
 {
     public class AccountController : Controller
     {
-        //        private const string BASE_USER_ROLE = "NoRoleUser";
+        private const string BASE_USER_ROLE = "Client";
 
-        //        private readonly ISignInManagerUtility<BaseUser> _signInManager;
-        //        private readonly IUserManagerUtility<BaseUser> _userManager;
-        //        private readonly ILoggerUtility<AccountController> _logger;
-        //        private readonly IModelStateHandler _modelStateHandler;
-        //        private readonly ILocalRedirector _localRedirector;
+        private readonly IAccountControllerService accountService;
 
-        //        public AccountController(
-        //            IUserManagerUtility<BaseUser> userManager,
-        //            ISignInManagerUtility<BaseUser> signInManager,
-        //            ILoggerUtility<AccountController> logger,
-        //            IModelStateHandler modelStateHandler,
-        //            ILocalRedirector localRedirector
+        private readonly ILogger<AccountController> logger;
 
-        //           )
-        //        {
-        //            _userManager = userManager;
-        //            _signInManager = signInManager;
-        //            _logger = logger;
-        //            _modelStateHandler = modelStateHandler;
-        //            _localRedirector = localRedirector;
-        //        }
+        public AccountController(
+            IAccountControllerService accountService,
+
+            ILogger<AccountController> logger
+            )
+        {
+            this.accountService = accountService;
+
+            this.logger = logger;
+        }
 
         [AllowAnonymous]
         [HttpGet]
@@ -51,25 +48,43 @@ namespace RentSystem.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
-            //ViewData["ReturnUrl"] = returnUrl;
-            //if (ModelState.IsValid)
-            //{
-            //    var user = new BaseUser { UserName = model.Email, Email = model.Email };
-            //    var result = await _userManager.CreateAsync(user, model.Password);
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var serviceModel = await this.accountService.RegistarPostCall(model.Email, model.Email, model.Password);
 
-            //    await _userManager.AddToRoleAsync(user, BASE_USER_ROLE);
-            //    if (result.Succeeded)
-            //    {
-            //        _logger.LogInformation("User created a new account with password.");
+                    if (!serviceModel)
+                    {
+                        this.logger.LogWarning("Service model return null");
+                    }
+                    else
+                    {
+                        //var model = this.modelFactory.Create(serviceModel);
 
-            //        await _signInManager.SignInAsync(user, isPersistent: false);
-            //        return RedirectToLocal("RegisterRole", "Account", "RegisterRole");
-            //    }
+                        //if (model != null)
+                        //{
+                        //    this.logger.LogInformation("Call done, displaying to view.");
 
-            //    this._modelStateHandler.AddError(result, ModelState);
-            //}
+                        //    return View(model);
+                        //}
+                        //else
+                        //{
+                        //    this.logger.LogWarning("Service model parsing to view model fails");
+                        //}
 
-            // If we got this far, something failed, redisplay form
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    this.logger.LogError(ex.Message);
+                }
+
+                return RedirectToAction("Error", "News");
+            }
+
             return View(model);
         }
 

@@ -327,9 +327,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{C3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ControllerValidator", "ControllerValidator", "{A0542A61-6E50-4ECD-A17C-806303738669}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.IdentityControllerValidator.Abstract", "RRF.IdentityControllerValidator.Abstract\RRF.IdentityControllerValidator.Abstract.csproj", "{5D42CFF1-A086-45AB-A44C-89CC12628AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.IdentityControllerValidator.Abstract", "RRF.IdentityControllerValidator.Abstract\RRF.IdentityControllerValidator.Abstract.csproj", "{5D42CFF1-A086-45AB-A44C-89CC12628AD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.ClientControllerValidation", "RRF.ClientControllerValidation\RRF.ClientControllerValidation.csproj", "{EF8CD990-2F06-406D-A5C3-4DFC6BD175A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RRF.ClientControllerValidation", "RRF.ClientControllerValidation\RRF.ClientControllerValidation.csproj", "{EF8CD990-2F06-406D-A5C3-4DFC6BD175A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{F7025F35-D8F7-4B43-AB9D-9044A9042275}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityCall", "IdentityCall", "{7B1B1700-6573-4949-BF19-FEA81D777AE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.WebService.AccountControllerService.Abstract", "RRF.WebService.AccountControllerService.Abstract\RRF.WebService.AccountControllerService.Abstract.csproj", "{0DD7E625-AFBA-4320-A7ED-18CF261C758E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.WebService.AccountControllerService", "RRF.WebService.AccountControllerService\RRF.WebService.AccountControllerService.csproj", "{013C030B-C3A8-4143-89F8-513E3ABC3CA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HttpClientService", "HttpClientService", "{EAABCC3D-FAF3-4533-B62A-6BFF18C12FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.WebService.HttpClientService.Abstract", "RRF.WebService.HttpClientService.Abstract\RRF.WebService.HttpClientService.Abstract.csproj", "{AD915CB4-D75C-411A-84E2-E43426F9896C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRF.WebService.HttpClientService", "RRF.WebService.HttpClientService\RRF.WebService.HttpClientService.csproj", "{D08507F9-FB51-41C9-9AFD-020EE89DAE6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -677,6 +691,22 @@ Global
 		{EF8CD990-2F06-406D-A5C3-4DFC6BD175A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF8CD990-2F06-406D-A5C3-4DFC6BD175A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF8CD990-2F06-406D-A5C3-4DFC6BD175A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DD7E625-AFBA-4320-A7ED-18CF261C758E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DD7E625-AFBA-4320-A7ED-18CF261C758E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DD7E625-AFBA-4320-A7ED-18CF261C758E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DD7E625-AFBA-4320-A7ED-18CF261C758E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013C030B-C3A8-4143-89F8-513E3ABC3CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013C030B-C3A8-4143-89F8-513E3ABC3CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013C030B-C3A8-4143-89F8-513E3ABC3CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013C030B-C3A8-4143-89F8-513E3ABC3CA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD915CB4-D75C-411A-84E2-E43426F9896C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD915CB4-D75C-411A-84E2-E43426F9896C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD915CB4-D75C-411A-84E2-E43426F9896C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD915CB4-D75C-411A-84E2-E43426F9896C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08507F9-FB51-41C9-9AFD-020EE89DAE6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08507F9-FB51-41C9-9AFD-020EE89DAE6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08507F9-FB51-41C9-9AFD-020EE89DAE6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08507F9-FB51-41C9-9AFD-020EE89DAE6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -843,6 +873,13 @@ Global
 		{A0542A61-6E50-4ECD-A17C-806303738669} = {C3883AA3-DA10-4A28-B908-909FB4A11305}
 		{5D42CFF1-A086-45AB-A44C-89CC12628AD8} = {A0542A61-6E50-4ECD-A17C-806303738669}
 		{EF8CD990-2F06-406D-A5C3-4DFC6BD175A4} = {A0542A61-6E50-4ECD-A17C-806303738669}
+		{F7025F35-D8F7-4B43-AB9D-9044A9042275} = {E39D4318-5E59-481D-A84D-A2B538154E91}
+		{7B1B1700-6573-4949-BF19-FEA81D777AE1} = {F7025F35-D8F7-4B43-AB9D-9044A9042275}
+		{0DD7E625-AFBA-4320-A7ED-18CF261C758E} = {7B1B1700-6573-4949-BF19-FEA81D777AE1}
+		{013C030B-C3A8-4143-89F8-513E3ABC3CA7} = {7B1B1700-6573-4949-BF19-FEA81D777AE1}
+		{EAABCC3D-FAF3-4533-B62A-6BFF18C12FEF} = {F7025F35-D8F7-4B43-AB9D-9044A9042275}
+		{AD915CB4-D75C-411A-84E2-E43426F9896C} = {EAABCC3D-FAF3-4533-B62A-6BFF18C12FEF}
+		{D08507F9-FB51-41C9-9AFD-020EE89DAE6C} = {EAABCC3D-FAF3-4533-B62A-6BFF18C12FEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30FC9563-F44D-425F-954C-47543FB38B98}

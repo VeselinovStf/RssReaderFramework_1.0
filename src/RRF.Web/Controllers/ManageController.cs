@@ -10,228 +10,240 @@
 //using System.Text;
 //using System.Threading.Tasks;
 
-//namespace RentSystem.Web.Controllers
-//{
-//    [Authorize]
-//    public class ManageController : Controller
-//    {
-//        private readonly ISignInManagerUtility<BaseUser> _signInManager;
-//        private readonly IUserManagerUtility<BaseUser> _userManager;
-//        private readonly ILoggerUtility<ManageController> _logger;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-//        public ManageController(
-//            IUserManagerUtility<BaseUser> userManager,
-//            ISignInManagerUtility<BaseUser> signInManager,
-//            ILoggerUtility<ManageController> logger
-//            )
-//        {
-//            _userManager = userManager;
-//            _signInManager = signInManager;
-//            _logger = logger;
-//        }
+namespace RentSystem.Web.Controllers
+{
+    [Authorize]
+    public class ManageController : Controller
+    {
+        //        private readonly ISignInManagerUtility<BaseUser> _signInManager;
+        //        private readonly IUserManagerUtility<BaseUser> _userManager;
+        //        private readonly ILoggerUtility<ManageController> _logger;
 
-//        [TempData]
-//        public string StatusMessage { get; set; }
+        //        public ManageController(
+        //            IUserManagerUtility<BaseUser> userManager,
+        //            ISignInManagerUtility<BaseUser> signInManager,
+        //            ILoggerUtility<ManageController> logger
+        //            )
+        //        {
+        //            _userManager = userManager;
+        //            _signInManager = signInManager;
+        //            _logger = logger;
+        //        }
 
-//        [HttpGet]
-//        public async Task<IActionResult> ChangePassword()
-//        {
-//            var user = await _userManager.GetUserAsync(User);
-//            if (user == null)
-//            {
-//                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-//            }
+        //        [TempData]
+        //        public string StatusMessage { get; set; }
 
-//            var hasPassword = await _userManager.HasPasswordAsync(user);
-//            if (!hasPassword)
-//            {
-//                return RedirectToAction(nameof(HomeController.Error));
-//            }
 
-//            var model = new ChangePasswordViewModel() { StatusMessage = this.StatusMessage };
-//            return View(model);
-//        }
+        [HttpGet]
+        public async Task<IActionResult> GetApiKey()
+        {
 
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return View(model);
-//            }
+            return View();
+        }
 
-//            var user = await _userManager.GetUserAsync(User);
-//            if (user == null)
-//            {
-//                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-//            }
+        //        [HttpGet]
+        //        public async Task<IActionResult> ChangePassword()
+        //        {
+        //            var user = await _userManager.GetUserAsync(User);
+        //            if (user == null)
+        //            {
+        //                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        //            }
 
-//            var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
-//            if (!changePasswordResult.Succeeded)
-//            {
-//                foreach (var error in changePasswordResult.Errors)
-//                {
-//                    ModelState.AddModelError(string.Empty, error.Description);
-//                }
-//                return View(model);
-//            }
+        //            var hasPassword = await _userManager.HasPasswordAsync(user);
+        //            if (!hasPassword)
+        //            {
+        //                return RedirectToAction(nameof(HomeController.Error));
+        //            }
 
-//            await _signInManager.RefreshSignInAsync(user);
-//            _logger.LogInformation("User changed their password successfully.");
-//            StatusMessage = "Your password has been changed.";
+        //            var model = new ChangePasswordViewModel() { StatusMessage = this.StatusMessage };
+        //            return View(model);
+        //        }
 
-//            return View(model);
-//        }
+        //        [HttpPost]
+        //        [ValidateAntiForgeryToken]
+        //        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        //        {
+        //            if (!ModelState.IsValid)
+        //            {
+        //                return View(model);
+        //            }
 
-//        [HttpGet]
-//        public async Task<IActionResult> DeletePersonalData()
-//        {
-//            var user = await _userManager.GetUserAsync(User);
-//            if (user == null)
-//            {
-//                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-//            }
+        //            var user = await _userManager.GetUserAsync(User);
+        //            if (user == null)
+        //            {
+        //                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        //            }
 
-//            var model = new DeletePersonalDataViewModel()
-//            {
-//                RequirePassword = await _userManager.HasPasswordAsync(user)
-//            };
+        //            var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+        //            if (!changePasswordResult.Succeeded)
+        //            {
+        //                foreach (var error in changePasswordResult.Errors)
+        //                {
+        //                    ModelState.AddModelError(string.Empty, error.Description);
+        //                }
+        //                return View(model);
+        //            }
 
-//            return View(model);
-//        }
+        //            await _signInManager.RefreshSignInAsync(user);
+        //            _logger.LogInformation("User changed their password successfully.");
+        //            StatusMessage = "Your password has been changed.";
 
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> DeletePersonalData(DeletePersonalDataViewModel model)
-//        {
-//            var user = await _userManager.GetUserAsync(User);
-//            if (user == null)
-//            {
-//                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-//            }
+        //            return View(model);
+        //        }
 
-//            var requirePassword = await _userManager.HasPasswordAsync(user);
-//            if (requirePassword)
-//            {
-//                if (!await _userManager.CheckPasswordAsync(user, model.Password))
-//                {
-//                    ModelState.AddModelError(string.Empty, "Password not correct.");
-//                    return View(model);
-//                }
-//            }
+        //        [HttpGet]
+        //        public async Task<IActionResult> DeletePersonalData()
+        //        {
+        //            var user = await _userManager.GetUserAsync(User);
+        //            if (user == null)
+        //            {
+        //                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        //            }
 
-//            var result = await _userManager.DeleteAsync(user);
-//            var userId = await _userManager.GetUserIdAsync(user);
-//            if (!result.Succeeded)
-//            {
-//                throw new InvalidOperationException($"Unexpected error occurred deleteing user with ID '{userId}'.");
-//            }
+        //            var model = new DeletePersonalDataViewModel()
+        //            {
+        //                RequirePassword = await _userManager.HasPasswordAsync(user)
+        //            };
 
-//            await _signInManager.SignOutAsync();
+        //            return View(model);
+        //        }
 
-//            _logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
+        //        [HttpPost]
+        //        [ValidateAntiForgeryToken]
+        //        public async Task<IActionResult> DeletePersonalData(DeletePersonalDataViewModel model)
+        //        {
+        //            var user = await _userManager.GetUserAsync(User);
+        //            if (user == null)
+        //            {
+        //                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        //            }
 
-//            return View(model);
-//        }
+        //            var requirePassword = await _userManager.HasPasswordAsync(user);
+        //            if (requirePassword)
+        //            {
+        //                if (!await _userManager.CheckPasswordAsync(user, model.Password))
+        //                {
+        //                    ModelState.AddModelError(string.Empty, "Password not correct.");
+        //                    return View(model);
+        //                }
+        //            }
 
-//        [HttpPost]
-//        public async Task<IActionResult> DownloadPersonalData()
-//        {
-//            var user = await _userManager.GetUserAsync(User);
-//            if (user == null)
-//            {
-//                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-//            }
+        //            var result = await _userManager.DeleteAsync(user);
+        //            var userId = await _userManager.GetUserIdAsync(user);
+        //            if (!result.Succeeded)
+        //            {
+        //                throw new InvalidOperationException($"Unexpected error occurred deleteing user with ID '{userId}'.");
+        //            }
 
-//            _logger.LogInformation("User with ID '{UserId}' asked for their personal data.", _userManager.GetUserId(User));
+        //            await _signInManager.SignOutAsync();
 
-//            // Only include personal data for download
-//            var personalData = new Dictionary<string, string>();
-//            var personalDataProps = typeof(BaseUser).GetProperties().Where(
-//                            prop => Attribute.IsDefined(prop, typeof(PersonalDataAttribute)));
-//            foreach (var p in personalDataProps)
-//            {
-//                personalData.Add(p.Name, p.GetValue(user)?.ToString() ?? "null");
-//            }
+        //            _logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
 
-//            Response.Headers.Add("Content-Disposition", "attachment; filename=PersonalData.json");
-//            return new FileContentResult(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(personalData)), "text/json");
-//        }
+        //            return View(model);
+        //        }
 
-//        [HttpGet]
-//        public async Task<IActionResult> Index()
-//        {
-//            var user = await _userManager.GetUserAsync(User);
-//            if (user == null)
-//            {
-//                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-//            }
+        //        [HttpPost]
+        //        public async Task<IActionResult> DownloadPersonalData()
+        //        {
+        //            var user = await _userManager.GetUserAsync(User);
+        //            if (user == null)
+        //            {
+        //                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        //            }
 
-//            var model = new IndexViewModel()
-//            {
-//                Email = user.Email,
-//                IsEmailConfirmed = user.EmailConfirmed,
-//                PhoneNumber = user.PhoneNumber,
-//                Username = user.UserName,
-//                StatusMessage = StatusMessage
-//            };
+        //            _logger.LogInformation("User with ID '{UserId}' asked for their personal data.", _userManager.GetUserId(User));
 
-//            return View(model);
-//        }
+        //            // Only include personal data for download
+        //            var personalData = new Dictionary<string, string>();
+        //            var personalDataProps = typeof(BaseUser).GetProperties().Where(
+        //                            prop => Attribute.IsDefined(prop, typeof(PersonalDataAttribute)));
+        //            foreach (var p in personalDataProps)
+        //            {
+        //                personalData.Add(p.Name, p.GetValue(user)?.ToString() ?? "null");
+        //            }
 
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> Index(IndexViewModel model)
-//        {
-//            if (!ModelState.IsValid)
-//            {
-//                return View(model);
-//            }
+        //            Response.Headers.Add("Content-Disposition", "attachment; filename=PersonalData.json");
+        //            return new FileContentResult(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(personalData)), "text/json");
+        //        }
 
-//            var user = await _userManager.GetUserAsync(User);
-//            if (user == null)
-//            {
-//                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-//            }
+        //        [HttpGet]
+        //        public async Task<IActionResult> Index()
+        //        {
+        //            var user = await _userManager.GetUserAsync(User);
+        //            if (user == null)
+        //            {
+        //                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        //            }
 
-//            var email = await _userManager.GetEmailAsync(user);
-//            if (model.Email != email)
-//            {
-//                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
-//                if (!setEmailResult.Succeeded)
-//                {
-//                    var userId = await _userManager.GetUserIdAsync(user);
-//                    throw new InvalidOperationException($"Unexpected error occurred setting email for user with ID '{userId}'.");
-//                }
-//            }
+        //            var model = new IndexViewModel()
+        //            {
+        //                Email = user.Email,
+        //                IsEmailConfirmed = user.EmailConfirmed,
+        //                PhoneNumber = user.PhoneNumber,
+        //                Username = user.UserName,
+        //                StatusMessage = StatusMessage
+        //            };
 
-//            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-//            if (model.PhoneNumber != phoneNumber)
-//            {
-//                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
-//                if (!setPhoneResult.Succeeded)
-//                {
-//                    var userId = await _userManager.GetUserIdAsync(user);
-//                    throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
-//                }
-//            }
+        //            return View(model);
+        //        }
 
-//            await _signInManager.RefreshSignInAsync(user);
-//            StatusMessage = "Your profile has been updated";
-//            return RedirectToAction(nameof(Index));
-//        }
+        //        [HttpPost]
+        //        [ValidateAntiForgeryToken]
+        //        public async Task<IActionResult> Index(IndexViewModel model)
+        //        {
+        //            if (!ModelState.IsValid)
+        //            {
+        //                return View(model);
+        //            }
 
-//        [HttpGet]
-//        public async Task<IActionResult> PersonalData()
-//        {
-//            var user = await _userManager.GetUserAsync(User);
-//            if (user == null)
-//            {
-//                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-//            }
+        //            var user = await _userManager.GetUserAsync(User);
+        //            if (user == null)
+        //            {
+        //                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        //            }
 
-//            return View();
-//        }
-//    }
-//}
+        //            var email = await _userManager.GetEmailAsync(user);
+        //            if (model.Email != email)
+        //            {
+        //                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
+        //                if (!setEmailResult.Succeeded)
+        //                {
+        //                    var userId = await _userManager.GetUserIdAsync(user);
+        //                    throw new InvalidOperationException($"Unexpected error occurred setting email for user with ID '{userId}'.");
+        //                }
+        //            }
+
+        //            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+        //            if (model.PhoneNumber != phoneNumber)
+        //            {
+        //                var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
+        //                if (!setPhoneResult.Succeeded)
+        //                {
+        //                    var userId = await _userManager.GetUserIdAsync(user);
+        //                    throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
+        //                }
+        //            }
+
+        //            await _signInManager.RefreshSignInAsync(user);
+        //            StatusMessage = "Your profile has been updated";
+        //            return RedirectToAction(nameof(Index));
+        //        }
+
+        //        [HttpGet]
+        //        public async Task<IActionResult> PersonalData()
+        //        {
+        //            var user = await _userManager.GetUserAsync(User);
+        //            if (user == null)
+        //            {
+        //                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        //            }
+
+        //            return View();
+        //        }
+    }
+}

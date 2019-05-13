@@ -26,6 +26,8 @@
     <ProjectReference Include="..\RRF.FeedNodeRepository\RRF.FeedNodeRepository.csproj" />
     <ProjectReference Include="..\RRF.FeedRepository.Abstract\RRF.FeedRepository.Abstract.csproj" />
     <ProjectReference Include="..\RRF.Feed\RRF.Feed.csproj" />
+    <ProjectReference Include="..\RRF.HttpClientFactoryWrapper.Abstract\RRF.HttpClientFactoryWrapper.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.HttpClientFactoryWrapper\RRF.HttpClientFactoryWrapper.csproj" />
     <ProjectReference Include="..\RRF.Identity.AccountManager.Abstract\RRF.Identity.AccountManager.Abstract.csproj" />
     <ProjectReference Include="..\RRF.Identity.AccountManager\RRF.Identity.AccountManager.csproj" />
     <ProjectReference Include="..\RRF.Identity.Models.BaseModel\RRF.Identity.Models.BaseModel.csproj" />

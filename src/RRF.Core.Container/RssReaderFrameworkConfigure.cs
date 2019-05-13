@@ -50,6 +50,7 @@ using RRF.EFService.FormatElementService;
 using RRF.EFService.RssSettingsService.Abstrtact;
 using RRF.EFService.RssSettingsService;
 using RRF.EFModels.Abstract;
+using RRF.HttpClientFactoryWrapper.Abstract;
 
 namespace RRF.Core.Container
 {
@@ -77,6 +78,8 @@ namespace RRF.Core.Container
 
         private static void RegisterRssReaderFrameworkServices(IServiceCollection service)
         {
+            //
+
             //FeedNode
             service.AddScoped<IFeed<IFeedNode>, FeedNodeFeed>();
             service.AddScoped<IFeedRepository<IFeedNode>, FeedNodeRepository.FeedNodeRepository>();

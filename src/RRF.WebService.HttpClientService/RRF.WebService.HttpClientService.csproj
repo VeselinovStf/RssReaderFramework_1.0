@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RRF.HttpClientFactoryWrapper.Abstract\RRF.HttpClientFactoryWrapper.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.WebService.HttpClientService.Abstract\RRF.WebService.HttpClientService.Abstract.csproj" />
+  </ItemGroup>
+
+</Project>

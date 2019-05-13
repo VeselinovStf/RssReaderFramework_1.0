@@ -10,5 +10,7 @@ namespace RRF.HttpClientFactoryWrapper.Abstract
         bool SetBaseAddress(Uri address);
 
         Task<string> GetStringAsync();
+
+        Task<bool> RegisterClient(string apiAddress, string email, string username, string password);
     }
 }
