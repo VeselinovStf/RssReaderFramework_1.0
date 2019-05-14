@@ -76,33 +76,13 @@ namespace RRF.HttpClientFactoryWrapper
             return true;
         }
 
-        public async Task<bool> RegisterClient(string apiAddress, string email, string username, string password)
+        public async Task<bool> RegisterClient(string model)
         {
             try
             {
-                //var content = new Dictionary<string, string>()
-                //{
-                //    { "email", email },
-                //    { "password", password},
-                //    { "confirmPassword" , password }
-                //};
+                
+                var result = await this.HttpClient.PostAsync(this.HttpClient.BaseAddress, new StringContent(model, Encoding.UTF8, "application/json"));
 
-                //this.HttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //var response = await this.HttpClient.PostAsync(apiAddress, new FormUrlEncodedContent(content));
-
-                var MyObject = new JsonRegister()
-                {
-                    email = email,
-                    password = password,
-                    confirmPassword = password
-                };
-
-                HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
-                var stringified = JsonConvert.SerializeObject(MyObject);
-                var result = await this.HttpClient.PostAsync(apiAddress, new StringContent(stringified, Encoding.UTF8, "application/json"));
-
-                //TODO: RETURN PROPER THING!!
                 return result.IsSuccessStatusCode;
             }
             catch (Exception ex)
@@ -110,12 +90,5 @@ namespace RRF.HttpClientFactoryWrapper
                 throw;
             }
         }
-    }
-
-    public class JsonRegister
-    {
-        public string email { get; set; }
-        public string password { get; set; }
-        public string confirmPassword { get; set; }
     }
 }

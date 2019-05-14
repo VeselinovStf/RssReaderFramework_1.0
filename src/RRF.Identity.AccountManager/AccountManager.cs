@@ -39,6 +39,11 @@ namespace RRF.Identity.AccountManager
             }
         }
 
+        public bool IsSignedIn(ClaimsPrincipal user)
+        {
+            return this.signInManagerUtility.IsSignedIn(user);
+        }
+
         public async Task<bool> PasswordSignInAsync(string email, string password, bool rememberME, bool lockoutOnFailure = true)
         {
             try

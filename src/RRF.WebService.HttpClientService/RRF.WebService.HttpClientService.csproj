@@ -1,12 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RRF.GuardValidator\RRF.GuardValidator.csproj" />
     <ProjectReference Include="..\RRF.HttpClientFactoryWrapper.Abstract\RRF.HttpClientFactoryWrapper.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.JsonWrapper.Abstract\RRF.JsonWrapper.Abstract.csproj" />
     <ProjectReference Include="..\RRF.WebService.HttpClientService.Abstract\RRF.WebService.HttpClientService.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.WebService.JsonDTO.JsonRegisterDTO\RRF.WebService.JsonDTO.JsonRegisterDTO.csproj" />
   </ItemGroup>
 
 </Project>

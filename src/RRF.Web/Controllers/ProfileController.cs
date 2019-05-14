@@ -8,6 +8,11 @@ namespace RRF.Web.Controllers
 {
     public class ProfileController : Controller
     {
+        public async Task<IActionResult> Wellcome()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> AddRssChannel(string rssChannel)
         {
             return View();

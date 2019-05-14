@@ -8,5 +8,7 @@ namespace RRF.WebService.HttpClientService.Abstract
         Task<string> GetStringResult(string apiAddress);
 
         Task<bool> RegisterClient(string apiAddress, string email, string username, string password);
+
+        void SetClient(string apiAddress);
     }
 }

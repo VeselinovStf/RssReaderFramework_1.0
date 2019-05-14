@@ -10,10 +10,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RRF.HttpClientFactoryWrapper.Abstract;
+using RRF.JsonSerializeWrapper;
+using RRF.JsonWrapper.Abstract;
 using RRF.WebService.AccountControllerService;
 using RRF.WebService.AccountControllerService.Abstract;
+using RRF.WebService.ClientService;
+using RRF.WebService.ClientService.Abstract;
 using RRF.WebService.HttpClientService;
 using RRF.WebService.HttpClientService.Abstract;
+using RRF.WebService.JsonDTO.JsonRegisterDTO;
 
 namespace RRF.Web
 {
@@ -38,9 +43,11 @@ namespace RRF.Web
             });
 
             services.AddScoped<IHttpClientFactoryWrapper, HttpClientFactoryWrapper.HttpClientFactoryWrapper>();
+            services.AddScoped<IJsonWrapper<JsonRegisterDTO>, JsonSerializeWrapper<JsonRegisterDTO>>();
 
             services.AddScoped<IAccountControllerService, AccountControllerService>();
             services.AddScoped<IHttpClientService, HttpClientService>();
+            services.AddScoped<IClientService, ClientService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

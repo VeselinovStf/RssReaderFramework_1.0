@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RRF.Identity.AccountManager.Abstract
@@ -14,5 +15,7 @@ namespace RRF.Identity.AccountManager.Abstract
         Task<bool> PasswordSignInAsync(string email, string password, bool rememberME, bool lockoutOnFailure = true);
 
         Task<bool> SignOutAsync();
+
+        bool IsSignedIn(ClaimsPrincipal user);
     }
 }

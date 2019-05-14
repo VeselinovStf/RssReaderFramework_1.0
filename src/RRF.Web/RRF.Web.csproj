@@ -19,8 +19,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RRF.HttpClientFactoryWrapper\RRF.HttpClientFactoryWrapper.csproj" />
+    <ProjectReference Include="..\RRF.Identity.AccountManager.Abstract\RRF.Identity.AccountManager.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.Identity.ManageManager.Abstract\RRF.Identity.ManageManager.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.JsonSerializeWrapper\RRF.JsonSerializeWrapper.csproj" />
     <ProjectReference Include="..\RRF.WebService.AccountControllerService.Abstract\RRF.WebService.AccountControllerService.Abstract.csproj" />
     <ProjectReference Include="..\RRF.WebService.AccountControllerService\RRF.WebService.AccountControllerService.csproj" />
+    <ProjectReference Include="..\RRF.WebService.ClientService.Abstract\RRF.WebService.ClientService.Abstract.csproj" />
+    <ProjectReference Include="..\RRF.WebService.ClientService\RRF.WebService.ClientService.csproj" />
     <ProjectReference Include="..\RRF.WebService.HttpClientService\RRF.WebService.HttpClientService.csproj" />
   </ItemGroup>
 

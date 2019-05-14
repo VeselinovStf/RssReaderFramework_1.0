@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using RRF.GuardValidator;
 using RRF.WebService.AccountControllerService.Abstract;
 using RRF.WebService.HttpClientService.Abstract;
 using System;
@@ -19,6 +20,10 @@ namespace RRF.WebService.AccountControllerService
 
         public async Task<bool> RegistarPostCall(string email, string userName, string password)
         {
+            Validator.StringIsNullOrEmpty(email);
+            Validator.StringIsNullOrEmpty(userName);
+            Validator.StringIsNullOrEmpty(password);
+
             try
             {
                 var apiAddress = this.configuration.GetSection("API_Connection:RegisterClientPage").Value;
@@ -29,8 +34,10 @@ namespace RRF.WebService.AccountControllerService
             }
             catch (Exception ex)
             {
-                throw;
+                throw  new ArgumentException(ex.Message);
             }
         }
+
+       
     }
 }

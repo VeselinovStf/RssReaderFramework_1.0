@@ -11,6 +11,6 @@ namespace RRF.HttpClientFactoryWrapper.Abstract
 
         Task<string> GetStringAsync();
 
-        Task<bool> RegisterClient(string apiAddress, string email, string username, string password);
+        Task<bool> RegisterClient(string model);
     }
 }
