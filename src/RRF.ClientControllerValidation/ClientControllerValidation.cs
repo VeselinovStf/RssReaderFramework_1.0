@@ -3,6 +3,7 @@ using RRF.EFModels;
 using RRF.Identity.AccountManager.Abstract;
 using RRF.IdentityControllerValidator.Abstract;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RRF.ClientControllerValidation
@@ -57,6 +58,11 @@ namespace RRF.ClientControllerValidation
 
                 throw new AccessViolationException(ex.Message);
             }
+        }
+
+        public bool IsSignIn(ClaimsPrincipal user)
+        {
+            return this.accountManager.IsSignedIn(user);
         }
     }
 }

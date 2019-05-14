@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RRF.WebService.HttpClientService.Abstract
@@ -10,5 +11,7 @@ namespace RRF.WebService.HttpClientService.Abstract
         Task<bool> RegisterClient(string apiAddress, string email, string username, string password);
 
         void SetClient(string apiAddress);
+
+        Task<bool> IsSignedIn(string apiAddress);
     }
 }

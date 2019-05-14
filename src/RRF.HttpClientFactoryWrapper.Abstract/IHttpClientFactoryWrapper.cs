@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RRF.HttpClientFactoryWrapper.Abstract
@@ -12,5 +13,7 @@ namespace RRF.HttpClientFactoryWrapper.Abstract
         Task<string> GetStringAsync();
 
         Task<bool> RegisterClient(string model);
+
+        Task<bool> IsSignedIn();
     }
 }

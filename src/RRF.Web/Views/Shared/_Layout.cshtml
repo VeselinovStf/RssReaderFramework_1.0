@@ -49,6 +49,7 @@
                     </div>
                     <!-- Navbar items -->
                     <ul class="navbar-nav ml-auto">
+                        @await Component.InvokeAsync("GuestMenu")
                         @await Component.InvokeAsync("AdminMenu")
                         @await Component.InvokeAsync("ClientMenu")
                     </ul>

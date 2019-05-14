@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -88,6 +89,20 @@ namespace RRF.HttpClientFactoryWrapper
             catch (Exception ex)
             {
                 throw;
+            }
+        }
+
+        public async Task<bool> IsSignedIn()
+        {
+            try
+            {
+                var model = await this.HttpClient.GetStringAsync(this.HttpClient.BaseAddress);
+
+                return Boolean.Parse(model);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
             }
         }
     }

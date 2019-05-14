@@ -4,6 +4,7 @@ using RRF.JsonWrapper.Abstract;
 using RRF.WebService.HttpClientService.Abstract;
 using RRF.WebService.JsonDTO.JsonRegisterDTO;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RRF.WebService.HttpClientService
@@ -27,6 +28,13 @@ namespace RRF.WebService.HttpClientService
 
             return apiCall;
 
+        }
+
+        public async Task<bool> IsSignedIn(string apiAddress)
+        {
+            SetClient(apiAddress);
+
+            return await this.httpClientFactory.IsSignedIn();
         }
 
         public async Task<bool> RegisterClient(string apiAddress, string email, string username, string password)
@@ -62,7 +70,7 @@ namespace RRF.WebService.HttpClientService
                     throw new ArgumentException("Cant't set URL");
                 }
 
-                throw new ArgumentException("Cant't create Client");
+               // throw new ArgumentException("Cant't create Client");
             }
             catch (Exception ex)
             {

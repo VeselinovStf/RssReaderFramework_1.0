@@ -9,6 +9,7 @@ using RRF.IdentityControllerValidator.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RRF.API.Controllers
@@ -57,5 +58,7 @@ namespace RRF.API.Controllers
             // If we got this far, something failed, redisplay form
             return BadRequest("Invalid model parameters!");
         }
+
+       
     }
 }

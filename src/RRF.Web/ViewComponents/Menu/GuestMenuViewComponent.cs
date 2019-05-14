@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using RRF.EFModels;
-using RRF.Identity.AccountManager.Abstract;
-using RRF.Identity.ManageManager.Abstract;
-using RRF.Web.ViewComponents.ViewComponentsModel;
 using RRF.WebService.ClientService.Abstract;
 using System;
 using System.Collections.Generic;
@@ -12,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace RRF.Web.ViewComponents.Menu
 {
-    public class AdminMenuViewComponent : ViewComponent
+    public class GuestMenuViewComponent : ViewComponent
     {
-              
         private readonly IClientService clientService;
         private readonly IConfiguration configuration;
 
-        public AdminMenuViewComponent(
-           
+        public GuestMenuViewComponent(
             IClientService clientService, IConfiguration configuration)
         {
-         
+
             this.clientService = clientService;
             this.configuration = configuration;
         }
@@ -30,21 +24,12 @@ namespace RRF.Web.ViewComponents.Menu
         public async Task<IViewComponentResult> InvokeAsync()
         {
             if (await this.clientService.IsSignedIn(this.configuration.GetSection("API_Connection:SignInCheck").Get<string>()))
-            {
-
-                var client = await this.clientService.RetrieveUserAsync();
-                var role = await this.clientService.GetRolesAsync(client);
-
-                if (role.Contains("Administrator"))
-                {
-                    return View("AdminMenu");
-                }
-
+            {              
                 return View();
             }
             else
             {
-                return View();
+                return View("GuestMenu");
             }
         }
     }

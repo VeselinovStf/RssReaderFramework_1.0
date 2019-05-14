@@ -24,12 +24,12 @@ namespace RRF.WebService.ClientService
             throw new NotImplementedException();
         }
 
-        public bool IsSignedIn(ClaimsPrincipal user)
+        public async Task<bool> IsSignedIn(string apiAddress)
         {
-            throw new NotImplementedException();
+            return await this.httpClientService.IsSignedIn(apiAddress);
         }
 
-        public Task<Client> RetrieveUserAsync(ClaimsPrincipal user)
+        public Task<Client> RetrieveUserAsync()
         {
             throw new NotImplementedException();
         }

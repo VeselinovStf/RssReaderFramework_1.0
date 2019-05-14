@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using RRF.EFModels;
 using RRF.Identity.AccountManager.Abstract;
 using RRF.Identity.ManageManager.Abstract;
@@ -14,24 +15,24 @@ namespace RRF.Web.ViewComponents.Menu
     {
       
         private readonly IClientService clientService;
+        private readonly IConfiguration configuration;
 
         public ClientMenuViewComponent(
            
-            IClientService clientService)
+            IClientService clientService, IConfiguration configuration)
         {
            
             this.clientService = clientService;
+            this.configuration = configuration;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            if (this.clientService.IsSignedIn(HttpContext.User))
+            if (await this.clientService.IsSignedIn(this.configuration.GetSection("API_Connection:SignInCheck").Get<string>()))
             {
 
-                var client = await this.clientService.RetrieveUserAsync(HttpContext.User);
-                var role = await this.clientService.GetRolesAsync(client);
-
-              
+                var client = await this.clientService.RetrieveUserAsync();
+                var role = await this.clientService.GetRolesAsync(client);           
 
                 if (role.Contains("Client"))
                 {

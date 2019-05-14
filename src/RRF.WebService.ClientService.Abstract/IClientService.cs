@@ -8,9 +8,9 @@ namespace RRF.WebService.ClientService.Abstract
 {
     public interface IClientService
     {
-        bool IsSignedIn(ClaimsPrincipal user);
+        Task<bool> IsSignedIn(string apiAddress);
 
-        Task<Client> RetrieveUserAsync(ClaimsPrincipal user);
+        Task<Client> RetrieveUserAsync();
 
         Task<IList<string>> GetRolesAsync(Client client);
     }
