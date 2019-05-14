@@ -32,8 +32,8 @@ namespace RRF.Web.ViewComponents.Menu
             if (await this.clientService.IsSignedIn(this.configuration.GetSection("API_Connection:SignInCheck").Get<string>()))
             {
 
-                var client = await this.clientService.RetrieveUserAsync();
-                var role = await this.clientService.GetRolesAsync(client);
+                var client = await this.clientService.RetrieveUserAsync(this.configuration.GetSection("API_Connection:RetrieveUser").Get<string>());
+                var role = await this.clientService.GetRolesAsync(client, this.configuration.GetSection("API_Connection:GetUserRole").Get<string>());
 
                 if (role.Contains("Administrator"))
                 {

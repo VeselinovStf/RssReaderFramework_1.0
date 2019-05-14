@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RRF.EFModels;
 using RRF.HttpClientFactoryWrapper.Abstract;
 using System;
 using System.Collections.Generic;
@@ -27,14 +28,15 @@ namespace RRF.HttpClientFactoryWrapper
         {
             try
             {
-                if (this.HttpClient == null)
-                {
+                //if (this.HttpClient == null)
+                //{
                     this.HttpClient = this.httpClientFactory.CreateClient();
-                }
-                else
-                {
-                    return false;
-                }
+                //}
+                //else
+                //{
+
+                //    return false;
+                //}
             }
             catch (Exception ex)
             {
@@ -60,21 +62,18 @@ namespace RRF.HttpClientFactoryWrapper
         {
             try
             {
-                if (this.HttpClient.BaseAddress == null)
-                {
+               
                     this.HttpClient.BaseAddress = address;
-                }
-                else
-                {
-                    return false;
-                }
+
+                return true;
+                
             }
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.Message);
             }
 
-            return true;
+            
         }
 
         public async Task<bool> RegisterClient(string model)
@@ -99,6 +98,23 @@ namespace RRF.HttpClientFactoryWrapper
                 var model = await this.HttpClient.GetStringAsync(this.HttpClient.BaseAddress);
 
                 return Boolean.Parse(model);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
+        }
+
+        public async Task<IList<string>> GetRoleAsync()
+        {
+            try
+            {
+
+               var call = await this.HttpClient.GetStringAsync(this.HttpClient.BaseAddress);
+
+                var deserializeModel =  JsonConvert.DeserializeObject<IList<string>>(call);
+
+                return deserializeModel;
             }
             catch (Exception ex)
             {

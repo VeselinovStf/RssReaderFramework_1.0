@@ -3,6 +3,7 @@ using RRF.EFModels;
 using RRF.Identity.AccountManager.Abstract;
 using RRF.IdentityControllerValidator.Abstract;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -63,6 +64,17 @@ namespace RRF.ClientControllerValidation
         public bool IsSignIn(ClaimsPrincipal user)
         {
             return this.accountManager.IsSignedIn(user);
+        }
+
+        public async Task<Client> RetrieveUserAsync(ClaimsPrincipal user)
+        {
+            return await this.accountManager.RetrieveUserAsync(user);
+        }
+
+    
+        public  async Task<IList<string>> GetRolesAsync(ClaimsPrincipal user)
+        {
+            return await this.accountManager.GetRolesAsync(await this.accountManager.RetrieveUserAsync(user));
         }
     }
 }

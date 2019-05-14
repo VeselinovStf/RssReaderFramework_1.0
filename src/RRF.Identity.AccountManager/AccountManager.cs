@@ -90,6 +90,11 @@ namespace RRF.Identity.AccountManager
             }
         }
 
+        public async Task<Client> RetrieveUserAsync(ClaimsPrincipal user)
+        {
+            return await this.userManagerUtility.GetUserAsync(user);
+        }
+
         public async Task<bool> SignInAsync(Client user, bool isPersistent = false)
         {
             try
@@ -115,6 +120,19 @@ namespace RRF.Identity.AccountManager
             catch (Exception)
             {
                 throw new ArgumentException("Can't Sign out");
+            }
+        }
+
+        public async Task<IList<string>> GetRolesAsync(Client user)
+        {
+            try
+            {
+                return await this.userManagerUtility.GetRolesAsync(user);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException("Can't get role : " + ex.Message);
             }
         }
     }

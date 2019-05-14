@@ -59,6 +59,20 @@ namespace RRF.API.Controllers
             return BadRequest("Invalid model parameters!");
         }
 
-       
+        [HttpGet]
+       public async Task<IActionResult> RetrieveUser()
+        {
+            try
+            {
+                var model = await this.registerValidation.RetrieveUserAsync(HttpContext.User);
+
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException(ex.Message);
+            }
+        }
     }
 }

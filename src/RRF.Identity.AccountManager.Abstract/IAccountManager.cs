@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RRF.EFModels;
+using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -17,5 +19,9 @@ namespace RRF.Identity.AccountManager.Abstract
         Task<bool> SignOutAsync();
 
         bool IsSignedIn(ClaimsPrincipal user);
+
+        Task<Client> RetrieveUserAsync(ClaimsPrincipal user);
+
+        Task<IList<string>> GetRolesAsync(Client user);
     }
 }

@@ -5,6 +5,7 @@ using RRF.IdentityControllerValidator.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RRF.API.Controllers
@@ -25,15 +26,9 @@ namespace RRF.API.Controllers
             this.registerValidation = registerValidation;
         }
 
-        [HttpGet]
-        [Route("{client}")]
-        public async Task<IActionResult> GetRolesAsync([FromBody]Client client)
-        {
-            return Ok();
-        }
+       
 
-        [HttpGet]
-        
+        [HttpGet]       
         public bool IsSignedIn()
         {
             return this.registerValidation.IsSignIn(HttpContext.User);

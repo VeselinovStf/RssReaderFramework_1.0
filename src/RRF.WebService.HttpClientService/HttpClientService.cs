@@ -1,9 +1,12 @@
-﻿using RRF.GuardValidator;
+﻿using Newtonsoft.Json;
+using RRF.EFModels;
+using RRF.GuardValidator;
 using RRF.HttpClientFactoryWrapper.Abstract;
 using RRF.JsonWrapper.Abstract;
 using RRF.WebService.HttpClientService.Abstract;
 using RRF.WebService.JsonDTO.JsonRegisterDTO;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -18,6 +21,20 @@ namespace RRF.WebService.HttpClientService
         {
             this.httpClientFactory = httpClientFactory;
             this.jsonSerializer = jsonSerializer;
+        }
+
+        public async Task<IList<string>> GetRoleAsync(Client client, string apiAddress)
+        {
+            SetClient(apiAddress);
+
+           
+            var apiCall = await this.httpClientFactory.GetRoleAsync();
+
+            
+
+            return apiCall;
+            //TODO: REMOVE HARD CODED VALUE
+       
         }
 
         public async Task<string> GetStringResult(string apiAddress)
@@ -56,12 +73,26 @@ namespace RRF.WebService.HttpClientService
          
         }
 
-        public void SetClient(string apiAddress)
+        public async Task<Client> RetrieveUserAsync(string apiAddress)
+        {
+            SetClient(apiAddress);
+
+            var apiCall = await this.httpClientFactory.GetStringAsync();
+
+            Client client = JsonConvert.DeserializeObject<Client>(apiCall);
+
+            return client;
+        }
+
+        public void SetClient(string apiAddress, string queryString = "")
         {
             try
             {
                 if (this.httpClientFactory.CreateClient())
                 {
+                    var address = apiAddress + (string.IsNullOrWhiteSpace(queryString) ? "" : $"/{queryString}");
+
+
                     if (this.httpClientFactory.SetBaseAddress(new Uri(apiAddress)))
                     {
                         return;

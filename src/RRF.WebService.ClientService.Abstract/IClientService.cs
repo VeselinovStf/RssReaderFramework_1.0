@@ -10,8 +10,10 @@ namespace RRF.WebService.ClientService.Abstract
     {
         Task<bool> IsSignedIn(string apiAddress);
 
-        Task<Client> RetrieveUserAsync();
+        Task<Client> RetrieveUserAsync(string apiAddress);
 
-        Task<IList<string>> GetRolesAsync(Client client);
+        Task<IList<string>> GetRolesAsync(Client client, string apiAddress);
+
+      
     }
 }

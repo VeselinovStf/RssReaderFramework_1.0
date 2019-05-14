@@ -19,9 +19,9 @@ namespace RRF.WebService.ClientService
             this.httpClientService = httpClientService;
         }
 
-        public Task<IList<string>> GetRolesAsync(Client client)
+        public async Task<IList<string>> GetRolesAsync(Client client,string apiAddress)
         {
-            throw new NotImplementedException();
+            return await this.httpClientService.GetRoleAsync(client, apiAddress);
         }
 
         public async Task<bool> IsSignedIn(string apiAddress)
@@ -29,9 +29,9 @@ namespace RRF.WebService.ClientService
             return await this.httpClientService.IsSignedIn(apiAddress);
         }
 
-        public Task<Client> RetrieveUserAsync()
+        public async Task<Client> RetrieveUserAsync(string apiAddress)
         {
-            throw new NotImplementedException();
+            return await this.httpClientService.RetrieveUserAsync( apiAddress);
         }
     }
 }
